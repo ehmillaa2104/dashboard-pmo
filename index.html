@@ -8,121 +8,145 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <style>
-  :root {
-    color-scheme: light;
-    --ground:#F4F6F8;
-    --surface:#FFFFFF;
-    --ink:#111820;
-    --muted:#5B6773;
-    --line:#DEE4EA;
-    --accent:#1B5E9C;
-    --ok:#15803D;
-    --late:#BE123C;
-    --risk:#B45309;
-    --undef:#8A94A0;
-    --sans:"IBM Plex Sans", system-ui, -apple-system, Segoe UI, sans-serif;
-    --mono:"IBM Plex Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+  :root{
+    color-scheme:light;
+    --ground:#F4F6F8; --surface:#FFFFFF; --ink:#111820; --muted:#5B6773;
+    --line:#DEE4EA; --accent:#1B5E9C;
+    --ok:#15803D; --late:#BE123C; --risk:#B45309; --undef:#8A94A0; --block:#3F3F46;
+    --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Consolas,monospace;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      color-scheme: dark;
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      color-scheme:dark;
       --ground:#0D1317; --surface:#151C22; --ink:#E6ECF1; --muted:#94A1AC;
-      --line:#263038; --accent:#6DA9E0; --ok:#3FA463; --late:#E76A80;
-      --risk:#D08A3E; --undef:#7C8792;
+      --line:#263038; --accent:#6DA9E0;
+      --ok:#3FA463; --late:#E76A80; --risk:#D08A3E; --undef:#7C8792; --block:#A1A1AA;
     }
   }
-  :root[data-theme="dark"] {
-    color-scheme: dark;
+  :root[data-theme="dark"]{
+    color-scheme:dark;
     --ground:#0D1317; --surface:#151C22; --ink:#E6ECF1; --muted:#94A1AC;
-    --line:#263038; --accent:#6DA9E0; --ok:#3FA463; --late:#E76A80;
-    --risk:#D08A3E; --undef:#7C8792;
+    --line:#263038; --accent:#6DA9E0;
+    --ok:#3FA463; --late:#E76A80; --risk:#D08A3E; --undef:#7C8792; --block:#A1A1AA;
   }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
 
-  * { box-sizing: border-box; }
-  html, body { margin:0; padding:0; }
-  body {
-    background: var(--ground);
-    color: var(--ink);
-    font-family: var(--sans);
-    font-size: 15px;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-  }
-  .wrap { max-width: 1080px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 64px; }
+  header{margin-bottom:22px}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+  h1{font-size:clamp(26px,5vw,36px);line-height:1.1;margin:0 0 8px;letter-spacing:-.02em;text-wrap:balance}
+  .corte{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin:0}
 
-  /* Header */
-  .eyebrow {
-    font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
-    color: var(--muted); margin: 0 0 8px;
+  /* Tabs */
+  .tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);margin-bottom:26px;overflow-x:auto}
+  .tab{
+    appearance:none;background:none;border:none;border-bottom:2px solid transparent;
+    font-family:var(--sans);font-size:14px;font-weight:500;color:var(--muted);
+    padding:10px 14px;cursor:pointer;white-space:nowrap;margin-bottom:-1px;
   }
-  h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.1; margin: 0 0 10px; letter-spacing: -.02em; text-wrap: balance; }
-  .corte { font-family: var(--mono); font-size: 12.5px; color: var(--muted); margin: 0; }
-  header { border-bottom: 1px solid var(--line); padding-bottom: 24px; margin-bottom: 28px; }
+  .tab:hover{color:var(--ink)}
+  .tab[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+  .tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
 
-  h2 {
-    font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
-    color: var(--muted); margin: 0 0 14px;
-  }
+  h2{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+  section.pane{animation:fade .18s ease}
+  @keyframes fade{from{opacity:.4}to{opacity:1}}
+  @media (prefers-reduced-motion:reduce){section.pane{animation:none}}
 
   /* KPI */
-  .kpis { display:grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 32px; }
-  .kpi { background: var(--surface); border:1px solid var(--line); border-radius: 8px; padding: 16px 18px; }
-  .kpi .n { font-family: var(--mono); font-size: 30px; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; display:block; }
-  .kpi .l { font-size: 12.5px; color: var(--muted); display:block; margin-top: 4px; }
-  .kpi.alarm { border-color: var(--late); }
-  .kpi.alarm .n { color: var(--late); }
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+  .kpi{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:15px 17px}
+  .kpi .n{font-family:var(--mono);font-size:28px;font-weight:600;line-height:1.1;font-variant-numeric:tabular-nums;display:block}
+  .kpi .l{font-size:12.5px;color:var(--muted);display:block;margin-top:3px}
+  .kpi.alarm{border-color:var(--late)} .kpi.alarm .n{color:var(--late)}
+  .kpi.warn{border-color:var(--risk)} .kpi.warn .n{color:var(--risk)}
 
-  /* Distribuciones */
-  .dists { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
-  .panel { background: var(--surface); border:1px solid var(--line); border-radius: 8px; padding: 18px 20px 20px; }
-  .bar { display:flex; gap:2px; height: 10px; border-radius: 5px; overflow:hidden; margin-bottom: 14px; }
-  .bar span { display:block; }
-  .key { display:flex; flex-direction:column; gap: 7px; margin:0; padding:0; list-style:none; }
-  .key li { display:flex; align-items:center; gap:9px; font-size:13.5px; }
-  .dot { width:9px; height:9px; border-radius:2px; flex:none; }
-  .key .val { margin-left:auto; font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--muted); font-size:13px; }
+  .dists{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:17px 19px 19px}
+  .bar{display:flex;gap:2px;height:10px;border-radius:5px;overflow:hidden;margin-bottom:13px}
+  .key{display:flex;flex-direction:column;gap:7px;margin:0;padding:0;list-style:none}
+  .key li{display:flex;align-items:center;gap:9px;font-size:13.5px}
+  .dot{width:9px;height:9px;border-radius:2px;flex:none}
+  .key .val{margin-left:auto;font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px}
+
+  /* Filtros */
+  .filters{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px;align-items:center}
+  .fgroup{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  .flabel{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:2px}
+  .chip{
+    appearance:none;font-family:var(--sans);font-size:12.5px;font-weight:500;
+    padding:4px 11px;border-radius:999px;border:1px solid var(--line);
+    background:var(--surface);color:var(--muted);cursor:pointer;
+  }
+  .chip:hover{color:var(--ink);border-color:var(--muted)}
+  .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
   /* Tabla */
-  .tablebox { background: var(--surface); border:1px solid var(--line); border-radius:8px; overflow-x:auto; margin-bottom: 32px; }
-  table { border-collapse: collapse; width:100%; min-width: 720px; }
-  th, td { text-align:left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
-  th {
-    font-size: 11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
-    color: var(--muted); background: var(--ground); position:sticky; top:0;
-  }
-  tbody tr:last-child td { border-bottom: none; }
-  td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align:right; white-space:nowrap; }
-  td.proj { font-weight: 500; }
-  .sub { display:block; font-size:12px; color: var(--muted); font-weight:400; font-family: var(--mono); }
-  .pill {
-    display:inline-flex; align-items:center; gap:6px; white-space:nowrap;
-    font-size:12px; font-weight:500; padding: 3px 9px 3px 7px; border-radius: 999px;
-    border:1px solid var(--line); background: var(--ground); color: var(--ink);
-  }
-  .pill::before { content:""; width:7px; height:7px; border-radius:50%; background: currentColor; flex:none; }
-  .p-ok    { color: var(--ok);    border-color: color-mix(in srgb, var(--ok) 35%, var(--line)); }
-  .p-late  { color: var(--late);  border-color: color-mix(in srgb, var(--late) 35%, var(--line)); }
-  .p-risk  { color: var(--risk);  border-color: color-mix(in srgb, var(--risk) 35%, var(--line)); }
-  .p-undef { color: var(--undef); }
-  .dash { color: var(--undef); font-family: var(--mono); }
+  .tablebox{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow-x:auto}
+  table{border-collapse:collapse;width:100%;min-width:700px}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+  th{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--ground)}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr.clickable{cursor:pointer}
+  tbody tr.clickable:hover{background:var(--ground)}
+  tbody tr.clickable:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+  td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+  td.proj{font-weight:500}
+  .sub{display:block;font-size:12px;color:var(--muted);font-weight:400;font-family:var(--mono)}
+  .chev{color:var(--muted);font-size:16px;line-height:1}
+  .empty{padding:28px 14px;text-align:center;color:var(--muted);font-size:14px}
+
+  .pill{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-size:12px;font-weight:500;
+    padding:3px 9px 3px 7px;border-radius:999px;border:1px solid var(--line);background:var(--ground);color:var(--ink)}
+  .pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
+  .p-ok{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 35%,var(--line))}
+  .p-late{color:var(--late);border-color:color-mix(in srgb,var(--late) 35%,var(--line))}
+  .p-risk{color:var(--risk);border-color:color-mix(in srgb,var(--risk) 35%,var(--line))}
+  .p-block{color:var(--block);border-color:color-mix(in srgb,var(--block) 35%,var(--line))}
+  .p-undef{color:var(--undef)}
+  .dash{color:var(--undef);font-family:var(--mono)}
+
+  /* Detalle */
+  .back{appearance:none;background:none;border:none;font-family:var(--sans);font-size:13.5px;font-weight:500;
+    color:var(--accent);cursor:pointer;padding:4px 0;margin-bottom:12px}
+  .back:hover{text-decoration:underline}
+  .back:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+  .dhead{margin-bottom:18px}
+  .dhead h3{font-size:22px;margin:0 0 6px;letter-spacing:-.01em}
+  .dmeta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .grp{margin-bottom:18px}
+  .grp h4{font-size:13px;font-weight:600;margin:0 0 8px;color:var(--ink)}
+  .tasks{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+  .tasks li{display:flex;gap:12px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px}
+  .tasks li:last-child{border-bottom:none}
+  .tname{flex:1;min-width:0}
+  .tname b{font-weight:500;display:block}
+  .towner{font-size:12px;color:var(--muted)}
+  .tmoney{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap;text-align:right}
+  .tmoney .over{color:var(--late);font-weight:500}
+  .tmoney .none{color:var(--risk)}
 
   /* Hallazgos */
-  .find { background: var(--surface); border:1px solid var(--line); border-radius:8px; padding: 4px 20px; margin-bottom: 28px; }
-  .find > div { padding: 16px 0; border-bottom:1px solid var(--line); display:flex; gap:14px; align-items:flex-start; }
-  .find > div:last-child { border-bottom:none; }
-  .sev { width:3px; align-self:stretch; border-radius:2px; flex:none; margin-top:2px; }
-  .s-late { background: var(--late); } .s-risk { background: var(--risk); } .s-info { background: var(--accent); }
-  .find h3 { font-size:14.5px; margin:0 0 4px; font-weight:600; }
-  .find p { margin:0; font-size:13.5px; color: var(--muted); max-width: 68ch; }
+  .find{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:4px 20px}
+  .find > div{padding:16px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:flex-start}
+  .find > div:last-child{border-bottom:none}
+  .sev{width:3px;align-self:stretch;border-radius:2px;flex:none;margin-top:2px}
+  .s-late{background:var(--late)} .s-risk{background:var(--risk)} .s-info{background:var(--accent)}
+  .find h3{font-size:14.5px;margin:0 0 4px;font-weight:600}
+  .find p{margin:0;font-size:13.5px;color:var(--muted);max-width:68ch}
 
-  footer { border-top:1px solid var(--line); padding-top:18px; font-size:12.5px; color: var(--muted); }
-  footer p { margin: 0 0 6px; }
-  footer a { color: var(--accent); }
-  code { font-family: var(--mono); font-size: 12px; }
+  footer{border-top:1px solid var(--line);padding-top:18px;margin-top:34px;font-size:12.5px;color:var(--muted)}
+  footer p{margin:0 0 6px}
+  footer a{color:var(--accent)}
+  code{font-family:var(--mono);font-size:12px}
 
-  @media (max-width: 760px) {
-    .kpis { grid-template-columns: repeat(2, 1fr); }
-    .dists { grid-template-columns: 1fr; }
+  @media (max-width:760px){
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .dists{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -132,180 +156,291 @@
   <header>
     <p class="eyebrow">Oficina de Gestión de Proyectos</p>
     <h1>Portafolio 2026</h1>
-    <p class="corte">Corte: 24 sep 2026 &nbsp;·&nbsp; Fuente: monday.com — tablero Portafolio 2026 &nbsp;·&nbsp; 11 proyectos</p>
+    <p class="corte">Corte: 24 sep 2026 &nbsp;·&nbsp; Fuente: monday.com &nbsp;·&nbsp; 11 proyectos</p>
   </header>
 
-  <section aria-label="Indicadores">
+  <div class="tabs" role="tablist" aria-label="Secciones">
+    <button class="tab" role="tab" id="tab-resumen"   aria-controls="pane-resumen"   aria-selected="true">Resumen</button>
+    <button class="tab" role="tab" id="tab-proyectos" aria-controls="pane-proyectos" aria-selected="false">Proyectos</button>
+    <button class="tab" role="tab" id="tab-hallazgos" aria-controls="pane-hallazgos" aria-selected="false">Hallazgos</button>
+  </div>
+
+  <!-- RESUMEN -->
+  <section class="pane" id="pane-resumen" role="tabpanel" aria-labelledby="tab-resumen">
     <div class="kpis">
       <div class="kpi"><span class="n">11</span><span class="l">Proyectos en portafolio</span></div>
       <div class="kpi alarm"><span class="n">2</span><span class="l">Atrasados, ambos en curso</span></div>
       <div class="kpi"><span class="n">5</span><span class="l">Completados</span></div>
-      <div class="kpi"><span class="n">100,000</span><span class="l">Costo 2026 cargado (2 de 11)</span></div>
+      <div class="kpi warn"><span class="n">4</span><span class="l">Sin semáforo asignado</span></div>
     </div>
-  </section>
 
-  <section class="dists">
-    <div class="panel">
-      <h2>Estado del proyecto (RAG)</h2>
-      <div class="bar" role="img" aria-label="5 al día, 2 atrasados, 4 sin definir">
-        <span style="background:var(--ok);   width:45.5%"></span>
-        <span style="background:var(--late); width:18.2%"></span>
-        <span style="background:var(--undef);width:36.3%"></span>
+    <div class="dists">
+      <div class="panel">
+        <h2>Estado del proyecto (RAG)</h2>
+        <div class="bar" role="img" aria-label="5 al día, 2 atrasados, 4 sin definir">
+          <span style="background:var(--ok);width:45.5%"></span>
+          <span style="background:var(--late);width:18.2%"></span>
+          <span style="background:var(--undef);width:36.3%"></span>
+        </div>
+        <ul class="key">
+          <li><span class="dot" style="background:var(--ok)"></span>Al día<span class="val">5</span></li>
+          <li><span class="dot" style="background:var(--late)"></span>Atrasado<span class="val">2</span></li>
+          <li><span class="dot" style="background:var(--undef)"></span>Sin definir<span class="val">4</span></li>
+        </ul>
       </div>
-      <ul class="key">
-        <li><span class="dot" style="background:var(--ok)"></span>Al día<span class="val">5</span></li>
-        <li><span class="dot" style="background:var(--late)"></span>Atrasado<span class="val">2</span></li>
-        <li><span class="dot" style="background:var(--undef)"></span>Sin definir<span class="val">4</span></li>
-      </ul>
+      <div class="panel">
+        <h2>Fase</h2>
+        <div class="bar" role="img" aria-label="5 completados, 5 en curso, 1 en planificación">
+          <span style="background:var(--ok);width:45.5%"></span>
+          <span style="background:var(--accent);width:45.5%"></span>
+          <span style="background:var(--undef);width:9%"></span>
+        </div>
+        <ul class="key">
+          <li><span class="dot" style="background:var(--ok)"></span>Completado<span class="val">5</span></li>
+          <li><span class="dot" style="background:var(--accent)"></span>En curso<span class="val">5</span></li>
+          <li><span class="dot" style="background:var(--undef)"></span>Planificación<span class="val">1</span></li>
+        </ul>
+      </div>
     </div>
 
     <div class="panel">
-      <h2>Fase</h2>
-      <div class="bar" role="img" aria-label="5 completados, 5 en curso, 1 en planificación">
-        <span style="background:var(--ok);     width:45.5%"></span>
-        <span style="background:var(--accent); width:45.5%"></span>
-        <span style="background:var(--undef);  width:9%"></span>
+      <h2>Lectura del periodo</h2>
+      <p style="margin:0;font-size:14px;color:var(--muted);max-width:70ch">
+        El portafolio tiene dos frentes de atención. El primero son los dos proyectos atrasados que siguen
+        en ejecución —Conexión sistema diesel y Laboratorio— sin cronograma cargado, de modo que la desviación
+        no es cuantificable hoy. El segundo es la calidad del registro: cuatro proyectos sin semáforo, nueve sin
+        costo y once sin líder asignado. Mientras ese hueco persista, el tablero refleja lo que se ha capturado,
+        no el estado real del portafolio.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section class="pane" id="pane-proyectos" role="tabpanel" aria-labelledby="tab-proyectos" hidden>
+    <div id="lista">
+      <div class="filters">
+        <div class="fgroup" id="f-rag">
+          <span class="flabel">Estado</span>
+          <button class="chip" data-v="todos" aria-pressed="true">Todos</button>
+          <button class="chip" data-v="al-dia" aria-pressed="false">Al día</button>
+          <button class="chip" data-v="atrasado" aria-pressed="false">Atrasado</button>
+          <button class="chip" data-v="sin-definir" aria-pressed="false">Sin definir</button>
+        </div>
+        <div class="fgroup" id="f-fase">
+          <span class="flabel">Fase</span>
+          <button class="chip" data-v="todas" aria-pressed="true">Todas</button>
+          <button class="chip" data-v="En curso" aria-pressed="false">En curso</button>
+          <button class="chip" data-v="Completado" aria-pressed="false">Completado</button>
+          <button class="chip" data-v="Planificación" aria-pressed="false">Planificación</button>
+        </div>
       </div>
-      <ul class="key">
-        <li><span class="dot" style="background:var(--ok)"></span>Completado<span class="val">5</span></li>
-        <li><span class="dot" style="background:var(--accent)"></span>En curso<span class="val">5</span></li>
-        <li><span class="dot" style="background:var(--undef)"></span>Planificación<span class="val">1</span></li>
-      </ul>
+
+      <div class="tablebox">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Proyecto</th><th scope="col">Estado</th><th scope="col">Fase</th>
+              <th scope="col">Tipo</th><th scope="col" style="text-align:right">Costo 2026</th><th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+      <p style="font-size:12.5px;color:var(--muted);margin:12px 0 0">
+        Las filas con <span class="chev">›</span> tienen detalle de tareas. Haz clic para entrar.
+      </p>
     </div>
+
+    <div id="detalle" hidden></div>
   </section>
 
-  <section>
-    <h2>Detalle del portafolio</h2>
-    <div class="tablebox">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">Proyecto</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Fase</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Cronograma planificado</th>
-            <th scope="col" style="text-align:right">Costo 2026</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="proj">Conexión sistema diesel 100-4<span class="sub">PMO-25-12</span></td>
-            <td><span class="pill p-late">Atrasado</span></td>
-            <td>En curso</td><td>Proyecto</td>
-            <td><span class="dash">sin cargar</span></td><td class="num dash">—</td>
-          </tr>
-          <tr>
-            <td class="proj">Laboratorio<span class="sub">PMO-25-04</span></td>
-            <td><span class="pill p-late">Atrasado</span></td>
-            <td>En curso</td><td>Proyecto</td>
-            <td><span class="dash">sin cargar</span></td><td class="num dash">—</td>
-          </tr>
-          <tr>
-            <td class="proj">Remodelación Oficinas TT (1-2)<span class="sub">TT</span></td>
-            <td><span class="pill p-undef">Sin definir</span></td>
-            <td>En curso</td><td>Mejora</td>
-            <td><span class="dash">sin cargar</span></td><td class="num">85,000</td>
-          </tr>
-          <tr>
-            <td class="proj">Sistema eléctrico Oficinas MOTI y TT</td>
-            <td><span class="pill p-ok">Al día</span></td>
-            <td>En curso</td><td>Mejora</td>
-            <td><span class="dash">sin cargar</span></td><td class="num dash">—</td>
-          </tr>
-          <tr>
-            <td class="proj">Recirculación P-1001/1004<span class="sub">PMO-25-10</span></td>
-            <td><span class="pill p-ok">Al día</span></td>
-            <td>En curso</td><td>Mejora</td>
-            <td><span class="dash">sin cargar</span></td><td class="num dash">—</td>
-          </tr>
-          <tr>
-            <td class="proj">Guardavidas para calle en MOTI<span class="sub">HSE-26-07</span></td>
-            <td><span class="pill p-undef">Sin definir</span></td>
-            <td>Planificación</td><td>Mejora</td>
-            <td><span class="dash">sin cargar</span></td><td class="num">15,000</td>
-          </tr>
-          <tr>
-            <td class="proj">Tanque 220-4<span class="sub">MAN-024-014</span></td>
-            <td><span class="pill p-ok">Al día</span></td>
-            <td>Completado</td><td>Proyecto</td>
-            <td class="num">04 dic 2025 – 24 may 2026</td><td class="num dash">—</td>
-          </tr>
-          <tr>
-            <td class="proj">Sala de capacitación TT<span class="sub">PMO-26-01</span></td>
-            <td><span class="pill p-ok">Al día</span></td>
-            <td>Completado</td><td>Mejora</td>
-            <td class="num">26 ene 2026 – 24 feb 2026</td><td class="num dash">—</td>
-          </tr>
-          <tr>
-            <td class="proj">Sistema para venteo en nivel 14<span class="sub">PMO-25-14</span></td>
-            <td><span class="pill p-ok">Al día</span></td>
-            <td>Completado</td><td>Mejora</td>
-            <td><span class="dash">sin cargar</span></td><td class="num dash">—</td>
-          </tr>
-          <tr>
-            <td class="proj">Certificación ISCC<span class="sub">PMO-25-09</span></td>
-            <td><span class="pill p-undef">Sin definir</span></td>
-            <td>Completado</td><td><span class="dash">—</span></td>
-            <td><span class="dash">sin cargar</span></td><td class="num dash">—</td>
-          </tr>
-          <tr>
-            <td class="proj">Cafetería<span class="sub">PMO-26-02</span></td>
-            <td><span class="pill p-undef">Sin definir</span></td>
-            <td>Completado</td><td><span class="dash">—</span></td>
-            <td><span class="dash">sin cargar</span></td><td class="num dash">—</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section>
-    <h2>Hallazgos del periodo</h2>
+  <!-- HALLAZGOS -->
+  <section class="pane" id="pane-hallazgos" role="tabpanel" aria-labelledby="tab-hallazgos" hidden>
     <div class="find">
-      <div>
-        <span class="sev s-late"></span>
-        <div>
-          <h3>Dos proyectos atrasados siguen en ejecución</h3>
-          <p>Conexión sistema diesel PMO-25-12 y Laboratorio PMO-25-04 están marcados Atrasado y en fase En curso. Son el foco inmediato del portafolio. Ninguno tiene cronograma planificado cargado, así que hoy no es posible cuantificar la desviación ni proyectar una fecha de cierre.</p>
-        </div>
-      </div>
-      <div>
-        <span class="sev s-risk"></span>
-        <div>
-          <h3>36% del portafolio sin semáforo asignado</h3>
-          <p>Cuatro de once proyectos conservan la etiqueta por defecto en Estado del proyecto. Mientras ese hueco exista, el semáforo del portafolio no es reportable al comité: cubre solo siete de once iniciativas.</p>
-        </div>
-      </div>
-      <div>
-        <span class="sev s-risk"></span>
-        <div>
-          <h3>El desempeño financiero no es medible</h3>
-          <p>Solo dos proyectos tienen Costo 2026 cargado —Remodelación Oficinas TT por 85,000 y Guardavidas por 15,000—. Los otros nueve están en blanco, de modo que el total de 100,000 no representa el portafolio, sino lo poco que se ha capturado.</p>
-        </div>
-      </div>
-      <div>
-        <span class="sev s-risk"></span>
-        <div>
-          <h3>Ningún proyecto tiene líder asignado</h3>
-          <p>La columna Líder está vacía en los once. Sin dueño nombrado no hay a quién escalar un atraso ni quién responde por el cierre.</p>
-        </div>
-      </div>
-      <div>
-        <span class="sev s-info"></span>
-        <div>
-          <h3>Dos cierres quedaron administrativamente incompletos</h3>
-          <p>Certificación ISCC PMO-25-09 y Cafetería PMO-26-02 figuran como Completado pero sin estado final ni tipo. Conviene cerrarlos formalmente o moverlos a un grupo de archivo para que dejen de pesar sobre las métricas del portafolio activo.</p>
-        </div>
-      </div>
+      <div><span class="sev s-late"></span><div>
+        <h3>El cierre de Remodelación Oficinas TT está bloqueado</h3>
+        <p>Las cuatro tareas de cierre del proyecto —Acta de Cierre Firmada y Revisión de Doc. y Costos, en Oficina A y en Oficina de Contabilidad— están marcadas Bloqueado. El proyecto no puede cerrarse administrativamente hasta resolverlas, aunque la obra esté prácticamente ejecutada.</p>
+      </div></div>
+      <div><span class="sev s-late"></span><div>
+        <h3>Dos proyectos atrasados siguen en ejecución</h3>
+        <p>Conexión sistema diesel PMO-25-12 y Laboratorio PMO-25-04 están marcados Atrasado y en fase En curso. Ninguno tiene cronograma planificado cargado, así que hoy no es posible cuantificar la desviación ni proyectar fecha de cierre.</p>
+      </div></div>
+      <div><span class="sev s-risk"></span><div>
+        <h3>Gasto sin presupuesto asignado en decoración</h3>
+        <p>La partida Cuadros / Decoración de oficinas registra 3,048.10 de costo real sin ningún monto en $ Plan. Además, Acometida eléctrica cerró en 4,199.75 contra un plan de 3,900, un sobrecosto de 299.75.</p>
+      </div></div>
+      <div><span class="sev s-risk"></span><div>
+        <h3>18,700 del presupuesto no están desglosados</h3>
+        <p>Remodelación Oficinas TT figura con 85,000 en el portafolio, pero la suma de $ Plan de sus tareas llega a 66,300. La diferencia no está asignada a ninguna partida, de modo que no hay contra qué controlarla.</p>
+      </div></div>
+      <div><span class="sev s-risk"></span><div>
+        <h3>36% del portafolio sin semáforo y 82% sin costo</h3>
+        <p>Cuatro de once proyectos conservan la etiqueta por defecto en Estado del proyecto, y solo dos tienen Costo 2026 cargado. El semáforo del portafolio cubre siete de once iniciativas y el total financiero no es representativo.</p>
+      </div></div>
+      <div><span class="sev s-info"></span><div>
+        <h3>Ningún proyecto del portafolio tiene líder</h3>
+        <p>La columna Líder está vacía en los once. A nivel de tarea sí hay responsables —la mayoría recae en una sola persona—, pero sin dueño a nivel proyecto no hay a quién escalar un atraso.</p>
+      </div></div>
+      <div><span class="sev s-info"></span><div>
+        <h3>Dos cierres quedaron administrativamente incompletos</h3>
+        <p>Certificación ISCC PMO-25-09 y Cafetería PMO-26-02 figuran como Completado pero sin estado final ni tipo. Conviene cerrarlos formalmente o archivarlos para que dejen de pesar sobre las métricas del portafolio activo.</p>
+      </div></div>
     </div>
   </section>
 
   <footer>
-    <p><strong>Nota técnica.</strong> Las columnas <code>Progreso</code>, <code>$ Plan</code>, <code>$ Actual</code>, <code>Δ $</code> y <code>Código</code> son de tipo espejo en monday.com. La API no entrega sus valores calculados, por lo que no aparecen en este tablero. Para incluirlas habría que leer directamente los tableros de origen de cada proyecto.</p>
-    <p>Datos leídos del tablero <a href="https://ehmillaa.monday.com/boards/18396373679">Portafolio 2026</a> el 24 de septiembre de 2026. Documento interno.</p>
+    <p><strong>Nota técnica.</strong> Las columnas <code>Progreso</code>, <code>$ Plan</code>, <code>$ Actual</code> y <code>Δ $</code> del tablero Portafolio 2026 son de tipo espejo; la API de monday.com no entrega sus valores calculados. Las cifras financieras de Remodelación Oficinas TT se leyeron directamente de su tablero de tareas.</p>
+    <p>Datos leídos el 24 de septiembre de 2026. Documento interno.</p>
   </footer>
-
 </div>
+
+<script>
+const PROYECTOS = [
+  {n:"Conexión sistema diesel 100-4", c:"PMO-25-12", rag:"atrasado", ragL:"Atrasado", fase:"En curso", tipo:"Proyecto", costo:null},
+  {n:"Laboratorio", c:"PMO-25-04", rag:"atrasado", ragL:"Atrasado", fase:"En curso", tipo:"Proyecto", costo:null},
+  {n:"Remodelación Oficinas TT (1-2)", c:"TT", rag:"sin-definir", ragL:"Sin definir", fase:"En curso", tipo:"Mejora", costo:85000, det:"tt"},
+  {n:"Sistema eléctrico Oficinas MOTI y TT", c:null, rag:"al-dia", ragL:"Al día", fase:"En curso", tipo:"Mejora", costo:null},
+  {n:"Recirculación P-1001/1004", c:"PMO-25-10", rag:"al-dia", ragL:"Al día", fase:"En curso", tipo:"Mejora", costo:null},
+  {n:"Guardavidas para calle en MOTI", c:"HSE-26-07", rag:"sin-definir", ragL:"Sin definir", fase:"Planificación", tipo:"Mejora", costo:15000},
+  {n:"Tanque 220-4", c:"MAN-024-014", rag:"al-dia", ragL:"Al día", fase:"Completado", tipo:"Proyecto", costo:null},
+  {n:"Sala de capacitación TT", c:"PMO-26-01", rag:"al-dia", ragL:"Al día", fase:"Completado", tipo:"Mejora", costo:null},
+  {n:"Sistema para venteo en nivel 14", c:"PMO-25-14", rag:"al-dia", ragL:"Al día", fase:"Completado", tipo:"Mejora", costo:null},
+  {n:"Certificación ISCC", c:"PMO-25-09", rag:"sin-definir", ragL:"Sin definir", fase:"Completado", tipo:null, costo:null},
+  {n:"Cafetería", c:"PMO-26-02", rag:"sin-definir", ragL:"Sin definir", fase:"Completado", tipo:null, costo:null}
+];
+
+const DETALLE_TT = {
+  titulo:"Remodelación Oficinas TT (1-2)",
+  kpis:[
+    {n:"18", l:"Tareas"}, {n:"4", l:"Bloqueadas", k:"alarm"},
+    {n:"66,300", l:"$ Plan en tareas"}, {n:"54,166", l:"$ Actual (82%)"}
+  ],
+  grupos:[
+    {g:"Oficina A — Planificación", t:[
+      {n:"Plan de Mejora", o:"rcardoze", s:"exec", sL:"En ejecución", p:null, a:null},
+      {n:"Aceptación Plan de Mejora", o:"Esteban Millaa", s:"ok", sL:"Listo", p:null, a:null}
+    ]},
+    {g:"Oficina A — Ejecución y Control", t:[
+      {n:"1. Obras infraestructura", o:"rcardoze", s:"ok", sL:"Listo", p:null, a:null},
+      {n:"2. Acometida eléctrica", o:null, s:"ok", sL:"Listo", p:3900, a:4199.75, over:true},
+      {n:"3. Muebles", o:"rcardoze", s:"ok", sL:"Listo", p:8900, a:6408.86},
+      {n:"4. Aires Acondicionados – Compra", o:"rcardoze", s:"ok", sL:"Listo", p:1800, a:600},
+      {n:"5. Cuadros / Decoración de oficinas", o:"rcardoze", s:"ok", sL:"Listo", p:null, a:3048.10, noplan:true},
+      {n:"6. Costo Contingencia", o:null, s:"ok", sL:"Listo", p:2000, a:null}
+    ]},
+    {g:"Oficina A — Cierre", t:[
+      {n:"Acta de Cierre Firmada", o:"rcardoze", s:"block", sL:"Bloqueado", p:null, a:null},
+      {n:"Revisión de Doc. y Costos", o:"rcardoze", s:"block", sL:"Bloqueado", p:null, a:null},
+      {n:"Avance fotográfico", o:"rcardoze", s:"ok", sL:"Listo", p:null, a:null}
+    ]},
+    {g:"Oficina Contabilidad — Ejecución y Control", t:[
+      {n:"1. Obras infraestructura", o:"rcardoze", s:"exec", sL:"En ejecución", p:25500, a:25500},
+      {n:"2. Muebles", o:"rcardoze", s:"exec", sL:"En ejecución", p:18900, a:14408.89},
+      {n:"3. Aires Acondicionados – Compra", o:"rcardoze", s:"ok", sL:"Listo", p:2800, a:null},
+      {n:"4. Costo Contingencia", o:null, s:"ok", sL:"Listo", p:2500, a:null}
+    ]},
+    {g:"Oficina de Contabilidad — Cierre", t:[
+      {n:"Acta de Cierre Firmada", o:null, s:"block", sL:"Bloqueado", p:null, a:null},
+      {n:"Revisión de Doc. y Costos", o:null, s:"block", sL:"Bloqueado", p:null, a:null},
+      {n:"Avance fotográfico", o:null, s:"ok", sL:"Listo", p:null, a:null}
+    ]}
+  ]
+};
+
+const PCLASS = {"al-dia":"p-ok","atrasado":"p-late","sin-definir":"p-undef","ok":"p-ok","exec":"p-risk","block":"p-block"};
+const money = v => v == null ? null : v.toLocaleString("es-MX",{minimumFractionDigits:2, maximumFractionDigits:2});
+let fRag = "todos", fFase = "todas";
+
+function pintarTabla(){
+  const vis = PROYECTOS.filter(p =>
+    (fRag === "todos" || p.rag === fRag) && (fFase === "todas" || p.fase === fFase));
+  const tb = document.getElementById("tbody");
+  if(!vis.length){
+    tb.innerHTML = '<tr><td colspan="6" class="empty">Ningún proyecto coincide con estos filtros.</td></tr>';
+    return;
+  }
+  tb.innerHTML = vis.map(p => {
+    const i = PROYECTOS.indexOf(p);
+    return `<tr ${p.det ? `class="clickable" tabindex="0" data-i="${i}"` : ""}>
+      <td class="proj">${p.n}${p.c ? `<span class="sub">${p.c}</span>` : ""}</td>
+      <td><span class="pill ${PCLASS[p.rag]}">${p.ragL}</span></td>
+      <td>${p.fase}</td>
+      <td>${p.tipo || '<span class="dash">—</span>'}</td>
+      <td class="num">${p.costo ? p.costo.toLocaleString("es-MX") : '<span class="dash">—</span>'}</td>
+      <td class="chev">${p.det ? "›" : ""}</td>
+    </tr>`;
+  }).join("");
+}
+
+function abrirDetalle(){
+  const d = DETALLE_TT;
+  document.getElementById("detalle").innerHTML = `
+    <button class="back" id="volver">← Volver a proyectos</button>
+    <div class="dhead">
+      <h3>${d.titulo}</h3>
+      <div class="dmeta">
+        <span class="pill p-undef">Sin definir</span>
+        <span style="font-size:13px;color:var(--muted)">En curso · Mejora · Empresa TT · Costo portafolio 85,000</span>
+      </div>
+    </div>
+    <div class="kpis">${d.kpis.map(k =>
+      `<div class="kpi ${k.k || ''}"><span class="n">${k.n}</span><span class="l">${k.l}</span></div>`).join("")}</div>
+    ${d.grupos.map(g => `<div class="grp"><h4>${g.g}</h4><ul class="tasks">${g.t.map(t => {
+      let m = "";
+      if(t.p != null || t.a != null){
+        const plan = t.p != null ? `Plan ${money(t.p)}` : `<span class="none">sin plan</span>`;
+        const act  = t.a != null ? `Real ${money(t.a)}` : `Real —`;
+        m = `${plan} · <span class="${t.over ? 'over' : ''}">${act}</span>`;
+      }
+      return `<li>
+        <span class="pill ${PCLASS[t.s]}">${t.sL}</span>
+        <span class="tname"><b>${t.n}</b><span class="towner">${t.o || "sin responsable"}</span></span>
+        <span class="tmoney">${m}</span>
+      </li>`;
+    }).join("")}</ul></div>`).join("")}`;
+  document.getElementById("lista").hidden = true;
+  document.getElementById("detalle").hidden = false;
+  document.getElementById("volver").addEventListener("click", () => {
+    document.getElementById("detalle").hidden = true;
+    document.getElementById("lista").hidden = false;
+  });
+  document.getElementById("volver").focus();
+}
+
+// Tabs
+const tabs = [...document.querySelectorAll(".tab")];
+tabs.forEach(t => t.addEventListener("click", () => {
+  tabs.forEach(o => {
+    const on = o === t;
+    o.setAttribute("aria-selected", on);
+    document.getElementById(o.getAttribute("aria-controls")).hidden = !on;
+  });
+}));
+
+// Filtros
+function wire(id, set){
+  document.getElementById(id).addEventListener("click", e => {
+    const b = e.target.closest(".chip");
+    if(!b) return;
+    [...e.currentTarget.querySelectorAll(".chip")].forEach(c => c.setAttribute("aria-pressed", c === b));
+    set(b.dataset.v);
+    pintarTabla();
+  });
+}
+wire("f-rag",  v => fRag = v);
+wire("f-fase", v => fFase = v);
+
+// Drill-down
+document.getElementById("tbody").addEventListener("click", e => {
+  if(e.target.closest("tr.clickable")) abrirDetalle();
+});
+document.getElementById("tbody").addEventListener("keydown", e => {
+  if((e.key === "Enter" || e.key === " ") && e.target.closest("tr.clickable")){
+    e.preventDefault(); abrirDetalle();
+  }
+});
+
+pintarTabla();
+</script>
 </body>
 </html>
