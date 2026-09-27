@@ -6,546 +6,505 @@
 <title>Portafolio PMO 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
 <style>
   :root{
     color-scheme:light;
-    --ground:#F4F6F8; --surface:#FFFFFF; --ink:#111820; --muted:#5B6773;
-    --line:#DEE4EA; --accent:#1B5E9C;
-    --ok:#15803D; --late:#BE123C; --risk:#B45309; --undef:#8A94A0; --block:#3F3F46;
-    --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
-    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Consolas,monospace;
+    --deck:#E9EBE6; --paper:#F7F8F5;
+    --ink:#16242E; --ink2:#5C6E79;
+    --rule:#C8CEC8; --rule-soft:#DCE0D9;
+    --signal:#9A6206;
+    --ok:#2E6B4F; --late:#9C2B2B; --none:#8C9490;
+    --tec:"Archivo", "Helvetica Neue", Arial, sans-serif;
+    --pro:"Source Serif 4", Georgia, "Times New Roman", serif;
   }
   @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
       color-scheme:dark;
-      --ground:#0D1317; --surface:#151C22; --ink:#E6ECF1; --muted:#94A1AC;
-      --line:#263038; --accent:#6DA9E0;
-      --ok:#3FA463; --late:#E76A80; --risk:#D08A3E; --undef:#7C8792; --block:#A1A1AA;
+      --deck:#12181B; --paper:#1A2226;
+      --ink:#E4E8E3; --ink2:#98A5A6;
+      --rule:#2C363A; --rule-soft:#232C30;
+      --signal:#D9A441;
+      --ok:#4E9A72; --late:#D46A6A; --none:#79837F;
     }
   }
   :root[data-theme="dark"]{
     color-scheme:dark;
-    --ground:#0D1317; --surface:#151C22; --ink:#E6ECF1; --muted:#94A1AC;
-    --line:#263038; --accent:#6DA9E0;
-    --ok:#3FA463; --late:#E76A80; --risk:#D08A3E; --undef:#7C8792; --block:#A1A1AA;
+    --deck:#12181B; --paper:#1A2226;
+    --ink:#E4E8E3; --ink2:#98A5A6;
+    --rule:#2C363A; --rule-soft:#232C30;
+    --signal:#D9A441;
+    --ok:#4E9A72; --late:#D46A6A; --none:#79837F;
   }
+
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:36px 64px}
+  body{margin:0;background:var(--deck);color:var(--ink);font-family:var(--tec);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .hoja{max-width:1000px;margin:0 auto;padding-inline:22px;padding-block:0 60px}
 
-  header{margin-bottom:22px}
-  .eyebrow{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
-  h1{font-size:clamp(26px,5vw,36px);line-height:1.1;margin:0 0 8px;letter-spacing:-.02em;text-wrap:balance}
-  .corte{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin:0}
+  /* Bloque de título — convención de plano de ingeniería */
+  .rotulo{display:flex;flex-wrap:wrap;gap:6px 28px;align-items:baseline;
+    border-bottom:2px solid var(--ink);padding-block:26px 12px;margin-bottom:0}
+  .rotulo h1{font-size:clamp(25px,4.4vw,34px);font-weight:700;letter-spacing:-.015em;margin:0;line-height:1}
+  .rotulo .org{font-size:14px;color:var(--ink2);margin:0}
+  .rotulo .dato{margin-left:auto;text-align:right;font-size:13px;color:var(--ink2);line-height:1.35}
+  .rotulo .dato b{display:block;color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
 
-  /* Tabs */
-  .tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);margin-bottom:26px;overflow-x:auto}
-  .tab{
-    appearance:none;background:none;border:none;border-bottom:2px solid transparent;
-    font-family:var(--sans);font-size:14px;font-weight:500;color:var(--muted);
-    padding:10px 14px;cursor:pointer;white-space:nowrap;margin-bottom:-1px;
-  }
-  .tab:hover{color:var(--ink)}
-  .tab[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
-  .tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+  /* Héroe: la frase, no el número */
+  .cabeza{padding-block:34px 26px;border-bottom:1px solid var(--rule)}
+  .veredicto{font-family:var(--pro);font-size:clamp(23px,3.9vw,33px);line-height:1.28;font-weight:400;
+    margin:0 0 26px;max-width:22ch;text-wrap:balance}
+  .veredicto em{font-style:normal;color:var(--late);font-weight:600}
 
-  h2{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
-  section.pane{animation:fade .18s ease}
-  @keyframes fade{from{opacity:.4}to{opacity:1}}
-  @media (prefers-reduced-motion:reduce){section.pane{animation:none}}
+  /* Aforo: una sola medida a todo lo ancho */
+  .aforo{display:flex;height:22px;width:100%;overflow:hidden;border:1px solid var(--ink)}
+  .aforo span{display:block}
+  .lecturas{display:flex;margin-top:9px;width:100%}
+  .lectura{padding-right:14px}
+  .lectura b{display:block;font-size:19px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.1}
+  .lectura span{font-size:12.5px;color:var(--ink2)}
 
-  /* KPI */
-  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
-  .kpi{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:15px 17px}
-  .kpi .n{font-family:var(--mono);font-size:28px;font-weight:600;line-height:1.1;font-variant-numeric:tabular-nums;display:block}
-  .kpi .l{font-size:12.5px;color:var(--muted);display:block;margin-top:3px}
-  .kpi.alarm{border-color:var(--late)} .kpi.alarm .n{color:var(--late)}
-  .kpi.warn{border-color:var(--risk)} .kpi.warn .n{color:var(--risk)}
+  /* Navegación */
+  .nav{display:flex;gap:26px;border-bottom:1px solid var(--rule);margin-bottom:30px;overflow-x:auto}
+  .nav button{appearance:none;background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;
+    font-family:var(--tec);font-size:15px;font-weight:500;color:var(--ink2);
+    padding:14px 0;cursor:pointer;white-space:nowrap}
+  .nav button:hover{color:var(--ink)}
+  .nav button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--signal);font-weight:600}
+  .nav button:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
 
-  .dists{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
-  .panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:17px 19px 19px}
-  .bar{display:flex;gap:2px;height:10px;border-radius:5px;overflow:hidden;margin-bottom:13px}
-  .key{display:flex;flex-direction:column;gap:7px;margin:0;padding:0;list-style:none}
-  .key li{display:flex;align-items:center;gap:9px;font-size:13.5px}
-  .dot{width:9px;height:9px;border-radius:2px;flex:none}
-  .key .val{margin-left:auto;font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px}
+  .pane{animation:entra .16s ease}
+  @keyframes entra{from{opacity:.55}to{opacity:1}}
+  @media (prefers-reduced-motion:reduce){.pane{animation:none}}
+
+  h2.rubro{font-family:var(--pro);font-size:19px;font-weight:600;margin:0 0 12px;letter-spacing:-.01em}
+
+  /* Lectura del periodo */
+  .lectura-periodo{font-family:var(--pro);font-size:16.5px;line-height:1.62;color:var(--ink);
+    max-width:66ch;margin:0 0 34px;padding-left:16px;border-left:2px solid var(--signal)}
 
   /* Filtros */
-  .filters{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px;align-items:center}
-  .fgroup{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-  .flabel{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:2px}
-  .chip{
-    appearance:none;font-family:var(--sans);font-size:12.5px;font-weight:500;
-    padding:4px 11px;border-radius:999px;border:1px solid var(--line);
-    background:var(--surface);color:var(--muted);cursor:pointer;
-  }
-  .chip:hover{color:var(--ink);border-color:var(--muted)}
-  .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
-  .chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .filtros{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px;align-items:center}
+  .filtros .quien{font-size:13px;color:var(--ink2);margin-right:6px}
+  .filtros button{appearance:none;font-family:var(--tec);font-size:13px;font-weight:500;
+    padding:4px 10px;border:1px solid var(--rule);background:transparent;color:var(--ink2);cursor:pointer}
+  .filtros button:hover{color:var(--ink);border-color:var(--ink2)}
+  .filtros button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--deck)}
+  .filtros button:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+  .grupo-filtro{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-right:22px}
 
-  /* Tabla */
-  .tablebox{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow-x:auto}
-  table{border-collapse:collapse;width:100%;min-width:700px}
-  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
-  th{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--ground)}
-  tbody tr:last-child td{border-bottom:none}
-  tbody tr.clickable{cursor:pointer}
-  tbody tr.clickable:hover{background:var(--ground)}
-  tbody tr.clickable:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
-  td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
-  td.proj{font-weight:500}
-  .sub{display:block;font-size:12px;color:var(--muted);font-weight:400;font-family:var(--mono)}
-  .chev{color:var(--muted);font-size:16px;line-height:1}
-  .empty{padding:28px 14px;text-align:center;color:var(--muted);font-size:14px}
-
-  .pill{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-size:12px;font-weight:500;
-    padding:3px 9px 3px 7px;border-radius:999px;border:1px solid var(--line);background:var(--ground);color:var(--ink)}
-  .pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
-  .p-ok{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 35%,var(--line))}
-  .p-late{color:var(--late);border-color:color-mix(in srgb,var(--late) 35%,var(--line))}
-  .p-risk{color:var(--risk);border-color:color-mix(in srgb,var(--risk) 35%,var(--line))}
-  .p-block{color:var(--block);border-color:color-mix(in srgb,var(--block) 35%,var(--line))}
-  .p-undef{color:var(--undef)}
-  .dash{color:var(--undef);font-family:var(--mono)}
+  /* Datasheet */
+  .marco{overflow-x:auto;margin-top:18px}
+  table{border-collapse:collapse;width:100%;min-width:640px}
+  thead th{font-size:12.5px;font-weight:600;color:var(--ink2);text-align:left;
+    padding:0 12px 8px;border-bottom:1px solid var(--ink)}
+  thead th:first-child{padding-left:16px}
+  tbody td{padding:13px 12px;border-bottom:1px solid var(--rule-soft);vertical-align:baseline}
+  tbody td:first-child{padding-left:16px;position:relative}
+  tbody tr:last-child td{border-bottom:1px solid var(--rule)}
+  tbody td:first-child::before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:3px;background:var(--riel,transparent)}
+  tr.r-ok   {--riel:var(--ok)}
+  tr.r-late {--riel:var(--late)}
+  tr.r-none {--riel:var(--none)}
+  tr.abrible{cursor:pointer}
+  tr.abrible:hover{background:var(--paper)}
+  tr.abrible:focus-visible{outline:2px solid var(--signal);outline-offset:-2px}
+  .obra{font-weight:500;display:block}
+  .clave{font-size:12.5px;color:var(--ink2)}
+  .cifra{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .vacio{color:var(--none)}
+  .estado{font-size:13.5px}
+  .entrar{color:var(--signal);font-weight:600}
+  .nada{padding:30px 16px;color:var(--ink2);font-family:var(--pro);font-size:16px}
+  .pie-tabla{font-size:13px;color:var(--ink2);margin:12px 0 0}
 
   /* Detalle */
-  .back{appearance:none;background:none;border:none;font-family:var(--sans);font-size:13.5px;font-weight:500;
-    color:var(--accent);cursor:pointer;padding:4px 0;margin-bottom:12px}
-  .back:hover{text-decoration:underline}
-  .back:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
-  .dhead{margin-bottom:18px}
-  .dhead h3{font-size:22px;margin:0 0 6px;letter-spacing:-.01em}
-  .dmeta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-  .grp{margin-bottom:18px}
-  .grp h4{font-size:13px;font-weight:600;margin:0 0 8px;color:var(--ink)}
-  .tasks{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:8px}
-  .tasks li{display:flex;gap:12px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px}
-  .tasks li:last-child{border-bottom:none}
-  .tname{flex:1;min-width:0}
-  .tname b{font-weight:500;display:block}
-  .towner{font-size:12px;color:var(--muted)}
-  .tmoney{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap;text-align:right}
-  .tmoney .over{color:var(--late);font-weight:500}
-  .tmoney .none{color:var(--risk)}
+  .volver{appearance:none;background:none;border:0;font-family:var(--tec);font-size:14px;font-weight:500;
+    color:var(--signal);cursor:pointer;padding:0;margin-bottom:18px}
+  .volver:hover{text-decoration:underline}
+  .volver:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+  .det-cabeza{border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:22px;
+    display:flex;flex-wrap:wrap;gap:4px 22px;align-items:baseline}
+  .det-cabeza h3{font-size:24px;font-weight:700;margin:0;letter-spacing:-.015em}
+  .det-cabeza p{margin:0;font-size:13.5px;color:var(--ink2)}
+  .medidas{display:flex;flex-wrap:wrap;gap:0 40px;margin-bottom:30px;
+    border-bottom:1px solid var(--rule);padding-bottom:20px}
+  .medida b{display:block;font-size:24px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.15}
+  .medida span{font-size:12.5px;color:var(--ink2)}
+  .medida.alerta b{color:var(--late)}
+  .frente{margin-bottom:26px}
+  .frente h4{font-family:var(--pro);font-size:16px;font-weight:600;margin:0 0 2px}
+  .frente .sitio{font-size:12.5px;color:var(--ink2);margin:0 0 10px}
+  .faenas{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+  .faenas li{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;
+    padding:11px 0 11px 16px;border-bottom:1px solid var(--rule-soft);position:relative;font-size:14px}
+  .faenas li::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;background:var(--riel,transparent)}
+  .f-ok{--riel:var(--ok)} .f-curso{--riel:var(--signal)} .f-trab{--riel:var(--late)}
+  .faenas .que{flex:1;min-width:190px}
+  .faenas .que b{font-weight:500;display:block}
+  .faenas .quien{font-size:12.5px;color:var(--ink2)}
+  .faenas .marca{font-size:12.5px;color:var(--ink2);width:92px}
+  .faenas .plata{font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums;text-align:right;min-width:170px}
+  .faenas .plata .sobre{color:var(--late);font-weight:600}
+  .faenas .plata .sin{color:var(--signal)}
 
   /* Hallazgos */
-  .find{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:4px 20px}
-  .find > div{padding:16px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:flex-start}
-  .find > div:last-child{border-bottom:none}
-  .sev{width:3px;align-self:stretch;border-radius:2px;flex:none;margin-top:2px}
-  .s-late{background:var(--late)} .s-risk{background:var(--risk)} .s-info{background:var(--accent)}
-  .find h3{font-size:14.5px;margin:0 0 4px;font-weight:600}
-  .find p{margin:0;font-size:13.5px;color:var(--muted);max-width:68ch}
+  .hallazgo{padding:20px 0 20px 18px;border-bottom:1px solid var(--rule-soft);position:relative;max-width:70ch}
+  .hallazgo:last-child{border-bottom:0}
+  .hallazgo::before{content:"";position:absolute;left:0;top:22px;bottom:22px;width:3px;background:var(--riel)}
+  .h-grave{--riel:var(--late)} .h-medio{--riel:var(--signal)} .h-leve{--riel:var(--ink2)}
+  .hallazgo h3{font-family:var(--pro);font-size:18px;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}
+  .hallazgo p{font-family:var(--pro);font-size:16px;line-height:1.6;margin:0;color:var(--ink)}
 
-  /* Fotos */
-  .jornada{margin-bottom:26px}
-  .jornada h4{font-size:14px;font-weight:600;margin:0 0 3px}
-  .jornada .cuando{font-family:var(--mono);font-size:12px;color:var(--muted);margin:0 0 11px}
-  .galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
-  .galeria button{
-    appearance:none;padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;
-    background:var(--surface);cursor:zoom-in;display:block;aspect-ratio:4/3;
-  }
-  .galeria button:hover{border-color:var(--accent)}
-  .galeria button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-  .galeria img{width:100%;height:100%;object-fit:cover;display:block;max-width:100%}
-  #visor{
-    position:fixed;inset:0;z-index:50;background:rgba(8,12,16,.92);
-    display:flex;align-items:center;justify-content:center;padding:20px;
-  }
-  #visor img{max-width:100%;max-height:82vh;border-radius:6px;object-fit:contain}
-  #visor .cerrar{
-    position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:16px;
-    appearance:none;background:rgba(255,255,255,.12);border:none;color:#fff;
-    font-family:var(--sans);font-size:14px;font-weight:500;padding:7px 14px;border-radius:999px;cursor:pointer;
-  }
-  #visor .cerrar:hover{background:rgba(255,255,255,.22)}
-  #visor .pie{position:absolute;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;
-    color:rgba(255,255,255,.8);font-family:var(--mono);font-size:12px}
+  /* Registro de obra */
+  .intro-fotos{font-family:var(--pro);font-size:16.5px;line-height:1.6;max-width:66ch;margin:0 0 30px;color:var(--ink)}
+  .jornada{margin-bottom:30px}
+  .jornada h4{font-family:var(--pro);font-size:17px;font-weight:600;margin:0 0 2px}
+  .jornada .fecha{font-size:12.5px;color:var(--ink2);margin:0 0 12px}
+  .tiras{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+  .tiras button{appearance:none;padding:0;border:1px solid var(--rule);background:var(--paper);
+    cursor:zoom-in;display:block;aspect-ratio:4/3;overflow:hidden}
+  .tiras button:hover{border-color:var(--signal)}
+  .tiras button:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+  .tiras img{width:100%;height:100%;object-fit:cover;display:block;max-width:100%}
 
-  footer{border-top:1px solid var(--line);padding-top:18px;margin-top:34px;font-size:12.5px;color:var(--muted)}
-  footer p{margin:0 0 6px}
-  footer a{color:var(--accent)}
-  code{font-family:var(--mono);font-size:12px}
+  #visor{position:fixed;inset:0;z-index:60;background:rgba(10,16,19,.94);
+    display:flex;align-items:center;justify-content:center;padding:22px}
+  #visor img{max-width:100%;max-height:82vh;object-fit:contain}
+  #visor .salir{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:18px;
+    appearance:none;background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;
+    font-family:var(--tec);font-size:14px;padding:7px 15px;cursor:pointer}
+  #visor .salir:hover{background:rgba(255,255,255,.14)}
+  #visor .rotulo-foto{position:absolute;bottom:calc(20px + env(safe-area-inset-bottom,0px));
+    left:0;right:0;text-align:center;color:rgba(255,255,255,.82);font-size:13px}
 
-  @media (max-width:760px){
-    .kpis{grid-template-columns:repeat(2,1fr)}
-    .dists{grid-template-columns:1fr}
+  footer{border-top:1px solid var(--rule);margin-top:42px;padding-top:20px;
+    font-size:13px;color:var(--ink2);max-width:74ch}
+  footer p{margin:0 0 7px}
+  footer a{color:var(--signal)}
+
+  @media (max-width:640px){
+    .rotulo .dato{margin-left:0;text-align:left}
+    .medidas{gap:0 26px}
+    .faenas .plata{text-align:left;min-width:0}
   }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="hoja">
 
-  <header>
-    <p class="eyebrow">Oficina de Gestión de Proyectos</p>
-    <h1>Portafolio 2026</h1>
-    <p class="corte">Corte: 24 sep 2026 &nbsp;·&nbsp; Fuente: monday.com &nbsp;·&nbsp; 11 proyectos</p>
-  </header>
-
-  <div class="tabs" role="tablist" aria-label="Secciones">
-    <button class="tab" role="tab" id="tab-resumen"   aria-controls="pane-resumen"   aria-selected="true">Resumen</button>
-    <button class="tab" role="tab" id="tab-proyectos" aria-controls="pane-proyectos" aria-selected="false">Proyectos</button>
-    <button class="tab" role="tab" id="tab-hallazgos" aria-controls="pane-hallazgos" aria-selected="false">Hallazgos</button>
-    <button class="tab" role="tab" id="tab-fotos" aria-controls="pane-fotos" aria-selected="false">Fotos de obra</button>
+  <div class="rotulo">
+    <div>
+      <h1>Portafolio 2026</h1>
+      <p class="org">Oficina de Gestión de Proyectos</p>
+    </div>
+    <div class="dato">
+      <b>11 iniciativas</b>
+      corte al 27 de septiembre
+    </div>
   </div>
 
-  <!-- RESUMEN -->
-  <section class="pane" id="pane-resumen" role="tabpanel" aria-labelledby="tab-resumen">
-    <div class="kpis">
-      <div class="kpi"><span class="n">11</span><span class="l">Proyectos en portafolio</span></div>
-      <div class="kpi alarm"><span class="n">2</span><span class="l">Atrasados, ambos en curso</span></div>
-      <div class="kpi"><span class="n">5</span><span class="l">Completados</span></div>
-      <div class="kpi warn"><span class="n">4</span><span class="l">Sin semáforo asignado</span></div>
+  <div class="cabeza">
+    <p class="veredicto">Dos proyectos están <em>atrasados</em> y ambos siguen en ejecución.</p>
+    <div class="aforo" role="img" aria-label="Cinco proyectos al día, dos atrasados, cuatro sin semáforo asignado">
+      <span style="background:var(--ok);width:45.5%"></span>
+      <span style="background:var(--late);width:18.2%"></span>
+      <span style="background:var(--none);width:36.3%"></span>
     </div>
-
-    <div class="dists">
-      <div class="panel">
-        <h2>Estado del proyecto (RAG)</h2>
-        <div class="bar" role="img" aria-label="5 al día, 2 atrasados, 4 sin definir">
-          <span style="background:var(--ok);width:45.5%"></span>
-          <span style="background:var(--late);width:18.2%"></span>
-          <span style="background:var(--undef);width:36.3%"></span>
-        </div>
-        <ul class="key">
-          <li><span class="dot" style="background:var(--ok)"></span>Al día<span class="val">5</span></li>
-          <li><span class="dot" style="background:var(--late)"></span>Atrasado<span class="val">2</span></li>
-          <li><span class="dot" style="background:var(--undef)"></span>Sin definir<span class="val">4</span></li>
-        </ul>
-      </div>
-      <div class="panel">
-        <h2>Fase</h2>
-        <div class="bar" role="img" aria-label="5 completados, 5 en curso, 1 en planificación">
-          <span style="background:var(--ok);width:45.5%"></span>
-          <span style="background:var(--accent);width:45.5%"></span>
-          <span style="background:var(--undef);width:9%"></span>
-        </div>
-        <ul class="key">
-          <li><span class="dot" style="background:var(--ok)"></span>Completado<span class="val">5</span></li>
-          <li><span class="dot" style="background:var(--accent)"></span>En curso<span class="val">5</span></li>
-          <li><span class="dot" style="background:var(--undef)"></span>Planificación<span class="val">1</span></li>
-        </ul>
-      </div>
+    <div class="lecturas">
+      <div class="lectura" style="width:45.5%"><b>5</b><span>al día</span></div>
+      <div class="lectura" style="width:18.2%"><b>2</b><span>atrasados</span></div>
+      <div class="lectura" style="width:36.3%"><b>4</b><span>sin semáforo</span></div>
     </div>
+  </div>
 
-    <div class="panel">
-      <h2>Lectura del periodo</h2>
-      <p style="margin:0;font-size:14px;color:var(--muted);max-width:70ch">
-        El portafolio tiene dos frentes de atención. El primero son los dos proyectos atrasados que siguen
-        en ejecución —Conexión sistema diesel y Laboratorio— sin cronograma cargado, de modo que la desviación
-        no es cuantificable hoy. El segundo es la calidad del registro: cuatro proyectos sin semáforo, nueve sin
-        costo y once sin líder asignado. Mientras ese hueco persista, el tablero refleja lo que se ha capturado,
-        no el estado real del portafolio.
+  <nav class="nav" role="tablist" aria-label="Secciones">
+    <button role="tab" id="t-port" aria-controls="p-port" aria-selected="true">Portafolio</button>
+    <button role="tab" id="t-hall" aria-controls="p-hall" aria-selected="false">Hallazgos</button>
+    <button role="tab" id="t-obra" aria-controls="p-obra" aria-selected="false">Registro de obra</button>
+  </nav>
+
+  <!-- PORTAFOLIO -->
+  <section class="pane" id="p-port" role="tabpanel" aria-labelledby="t-port">
+    <div id="listado">
+      <p class="lectura-periodo">
+        El portafolio tiene dos frentes de atención. El primero son los proyectos atrasados que siguen
+        abiertos, Conexión sistema diesel y Laboratorio, ninguno con cronograma cargado, de modo que la
+        desviación no se puede cuantificar hoy. El segundo es la calidad del registro: cuatro iniciativas
+        sin semáforo, nueve sin costo y once sin líder. Mientras ese hueco persista, este tablero refleja
+        lo capturado, no el estado real de la obra.
       </p>
-    </div>
-  </section>
 
-  <!-- PROYECTOS -->
-  <section class="pane" id="pane-proyectos" role="tabpanel" aria-labelledby="tab-proyectos" hidden>
-    <div id="lista">
-      <div class="filters">
-        <div class="fgroup" id="f-rag">
-          <span class="flabel">Estado</span>
-          <button class="chip" data-v="todos" aria-pressed="true">Todos</button>
-          <button class="chip" data-v="al-dia" aria-pressed="false">Al día</button>
-          <button class="chip" data-v="atrasado" aria-pressed="false">Atrasado</button>
-          <button class="chip" data-v="sin-definir" aria-pressed="false">Sin definir</button>
+      <div class="filtros">
+        <div class="grupo-filtro" id="f-rag">
+          <span class="quien">Estado</span>
+          <button data-v="todos" aria-pressed="true">Todos</button>
+          <button data-v="al-dia" aria-pressed="false">Al día</button>
+          <button data-v="atrasado" aria-pressed="false">Atrasado</button>
+          <button data-v="sin-definir" aria-pressed="false">Sin semáforo</button>
         </div>
-        <div class="fgroup" id="f-fase">
-          <span class="flabel">Fase</span>
-          <button class="chip" data-v="todas" aria-pressed="true">Todas</button>
-          <button class="chip" data-v="En curso" aria-pressed="false">En curso</button>
-          <button class="chip" data-v="Completado" aria-pressed="false">Completado</button>
-          <button class="chip" data-v="Planificación" aria-pressed="false">Planificación</button>
+        <div class="grupo-filtro" id="f-fase">
+          <span class="quien">Fase</span>
+          <button data-v="todas" aria-pressed="true">Todas</button>
+          <button data-v="En curso" aria-pressed="false">En curso</button>
+          <button data-v="Completado" aria-pressed="false">Completado</button>
+          <button data-v="Planificación" aria-pressed="false">Planificación</button>
         </div>
       </div>
 
-      <div class="tablebox">
+      <div class="marco">
         <table>
           <thead>
             <tr>
-              <th scope="col">Proyecto</th><th scope="col">Estado</th><th scope="col">Fase</th>
-              <th scope="col">Tipo</th><th scope="col" style="text-align:right">Costo 2026</th><th scope="col"></th>
+              <th scope="col">Iniciativa</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Fase</th>
+              <th scope="col">Tipo</th>
+              <th scope="col" class="cifra">Costo 2026</th>
+              <th scope="col"></th>
             </tr>
           </thead>
-          <tbody id="tbody"></tbody>
+          <tbody id="cuerpo"></tbody>
         </table>
       </div>
-      <p style="font-size:12.5px;color:var(--muted);margin:12px 0 0">
-        Las filas con <span class="chev">›</span> tienen detalle de tareas. Haz clic para entrar.
-      </p>
+      <p class="pie-tabla">Las filas con <span class="entrar">Ver obra</span> tienen desglose de faenas y costos.</p>
     </div>
 
     <div id="detalle" hidden></div>
   </section>
 
   <!-- HALLAZGOS -->
-  <section class="pane" id="pane-hallazgos" role="tabpanel" aria-labelledby="tab-hallazgos" hidden>
-    <div class="find">
-      <div><span class="sev s-late"></span><div>
-        <h3>El cierre de Remodelación Oficinas TT está bloqueado</h3>
-        <p>Las cuatro tareas de cierre del proyecto —Acta de Cierre Firmada y Revisión de Doc. y Costos, en Oficina A y en Oficina de Contabilidad— están marcadas Bloqueado. El proyecto no puede cerrarse administrativamente hasta resolverlas, aunque la obra esté prácticamente ejecutada.</p>
-      </div></div>
-      <div><span class="sev s-late"></span><div>
-        <h3>Dos proyectos atrasados siguen en ejecución</h3>
-        <p>Conexión sistema diesel PMO-25-12 y Laboratorio PMO-25-04 están marcados Atrasado y en fase En curso. Ninguno tiene cronograma planificado cargado, así que hoy no es posible cuantificar la desviación ni proyectar fecha de cierre.</p>
-      </div></div>
-      <div><span class="sev s-risk"></span><div>
-        <h3>Gasto sin presupuesto asignado en decoración</h3>
-        <p>La partida Cuadros / Decoración de oficinas registra 3,048.10 de costo real sin ningún monto en $ Plan. Además, Acometida eléctrica cerró en 4,199.75 contra un plan de 3,900, un sobrecosto de 299.75.</p>
-      </div></div>
-      <div><span class="sev s-risk"></span><div>
-        <h3>18,700 del presupuesto no están desglosados</h3>
-        <p>Remodelación Oficinas TT figura con 85,000 en el portafolio, pero la suma de $ Plan de sus tareas llega a 66,300. La diferencia no está asignada a ninguna partida, de modo que no hay contra qué controlarla.</p>
-      </div></div>
-      <div><span class="sev s-risk"></span><div>
-        <h3>36% del portafolio sin semáforo y 82% sin costo</h3>
-        <p>Cuatro de once proyectos conservan la etiqueta por defecto en Estado del proyecto, y solo dos tienen Costo 2026 cargado. El semáforo del portafolio cubre siete de once iniciativas y el total financiero no es representativo.</p>
-      </div></div>
-      <div><span class="sev s-info"></span><div>
-        <h3>Ningún proyecto del portafolio tiene líder</h3>
-        <p>La columna Líder está vacía en los once. A nivel de tarea sí hay responsables —la mayoría recae en una sola persona—, pero sin dueño a nivel proyecto no hay a quién escalar un atraso.</p>
-      </div></div>
-      <div><span class="sev s-info"></span><div>
-        <h3>Dos cierres quedaron administrativamente incompletos</h3>
-        <p>Certificación ISCC PMO-25-09 y Cafetería PMO-26-02 figuran como Completado pero sin estado final ni tipo. Conviene cerrarlos formalmente o archivarlos para que dejen de pesar sobre las métricas del portafolio activo.</p>
-      </div></div>
+  <section class="pane" id="p-hall" role="tabpanel" aria-labelledby="t-hall" hidden>
+    <div class="hallazgo h-grave">
+      <h3>El cierre de Remodelación Oficinas TT está trabado</h3>
+      <p>Las cuatro faenas de cierre —acta firmada y revisión de documentos y costos, en Oficina A y en Contabilidad— están marcadas como bloqueadas. La obra está prácticamente ejecutada, pero el proyecto no puede cerrarse mientras esas cuatro no se resuelvan.</p>
+    </div>
+    <div class="hallazgo h-grave">
+      <h3>Dos proyectos atrasados siguen abiertos</h3>
+      <p>Conexión sistema diesel PMO-25-12 y Laboratorio PMO-25-04 llevan semáforo rojo y fase en curso. Ninguno tiene cronograma planificado cargado, así que no hay forma de medir cuánto se han desviado ni de proyectar una fecha de cierre.</p>
+    </div>
+    <div class="hallazgo h-medio">
+      <h3>Hay gasto sin presupuesto asignado</h3>
+      <p>La partida de cuadros y decoración registra 3,048.10 de costo real sin ningún monto planificado contra el cual compararlo. Por su parte, la acometida eléctrica cerró en 4,199.75 frente a un plan de 3,900: un sobrecosto de 299.75.</p>
+    </div>
+    <div class="hallazgo h-medio">
+      <h3>Faltan 18,700 por desglosar</h3>
+      <p>Remodelación Oficinas TT figura con 85,000 en el portafolio, pero la suma de los planes de sus faenas llega a 66,300. La diferencia no está asignada a ninguna partida, de modo que no existe nada contra lo cual controlarla.</p>
+    </div>
+    <div class="hallazgo h-medio">
+      <h3>El semáforo cubre siete de once</h3>
+      <p>Cuatro iniciativas conservan la etiqueta por defecto en el estado del proyecto, y solo dos tienen costo 2026 cargado. Con esa cobertura, ni el semáforo ni el total financiero del portafolio son reportables al comité.</p>
+    </div>
+    <div class="hallazgo h-leve">
+      <h3>Ninguna iniciativa tiene líder</h3>
+      <p>La columna de líder está vacía en las once. A nivel de faena sí hay responsables, concentrados casi todos en una sola persona, pero sin dueño a nivel proyecto no hay a quién escalar un atraso.</p>
+    </div>
+    <div class="hallazgo h-leve">
+      <h3>Dos cierres quedaron a medias</h3>
+      <p>Certificación ISCC PMO-25-09 y Cafetería PMO-26-02 aparecen como completados pero sin estado final ni tipo. Conviene cerrarlos formalmente o archivarlos para que dejen de pesar sobre las métricas del portafolio activo.</p>
     </div>
   </section>
 
-  <!-- FOTOS -->
-  <section class="pane" id="pane-fotos" role="tabpanel" aria-labelledby="tab-fotos" hidden>
-    <div class="panel" style="margin-bottom:24px">
-      <h2>Avance fotográfico — Remodelación Oficinas TT</h2>
-      <p style="margin:0;font-size:14px;color:var(--muted);max-width:70ch">
-        Doce registros tomados en tres jornadas consecutivas de la Oficina A, subidos por R. Cardoze
-        desde el tablero de Monday. Haz clic en cualquiera para verla completa.
-      </p>
-    </div>
+  <!-- REGISTRO DE OBRA -->
+  <section class="pane" id="p-obra" role="tabpanel" aria-labelledby="t-obra" hidden>
+    <h2 class="rubro">Avance de la Oficina A</h2>
+    <p class="intro-fotos">
+      Doce registros tomados en tres jornadas consecutivas durante la primera semana de septiembre,
+      subidos por R. Cardoze al tablero de obra. Cualquiera de ellos se abre a tamaño completo.
+    </p>
 
     <div class="jornada">
-      <h4>Jornada 1 — Martes</h4>
-      <p class="cuando">1 de septiembre · 3 registros</p>
-      <div class="galeria">
-        <button type="button" data-src="fotos/d1-01.jpg" data-pie="Jornada 1 · Oficina A — avance 1"><img src="fotos/d1-01.jpg" alt="Avance de obra, jornada 1, imagen 1" loading="lazy"></button>
-        <button type="button" data-src="fotos/d1-02.jpg" data-pie="Jornada 1 · Oficina A — avance 2"><img src="fotos/d1-02.jpg" alt="Avance de obra, jornada 1, imagen 2" loading="lazy"></button>
-        <button type="button" data-src="fotos/d1-03.jpg" data-pie="Jornada 1 · Oficina A — avance 3"><img src="fotos/d1-03.jpg" alt="Avance de obra, jornada 1, imagen 3" loading="lazy"></button>
+      <h4>Primera jornada</h4>
+      <p class="fecha">Martes 1 de septiembre — 3 registros</p>
+      <div class="tiras">
+        <button type="button" data-src="fotos/d1-01.jpg" data-pie="Primera jornada, registro 1"><img src="fotos/d1-01.jpg" alt="Avance de obra, primera jornada, registro 1" loading="lazy"></button>
+        <button type="button" data-src="fotos/d1-02.jpg" data-pie="Primera jornada, registro 2"><img src="fotos/d1-02.jpg" alt="Avance de obra, primera jornada, registro 2" loading="lazy"></button>
+        <button type="button" data-src="fotos/d1-03.jpg" data-pie="Primera jornada, registro 3"><img src="fotos/d1-03.jpg" alt="Avance de obra, primera jornada, registro 3" loading="lazy"></button>
       </div>
     </div>
 
     <div class="jornada">
-      <h4>Jornada 2 — Miércoles</h4>
-      <p class="cuando">2 de septiembre · 5 registros</p>
-      <div class="galeria">
-        <button type="button" data-src="fotos/d2-01.jpg" data-pie="Jornada 2 · registro 1"><img src="fotos/d2-01.jpg" alt="Avance de obra, jornada 2, imagen 1" loading="lazy"></button>
-        <button type="button" data-src="fotos/d2-02.jpg" data-pie="Jornada 2 · registro 2"><img src="fotos/d2-02.jpg" alt="Avance de obra, jornada 2, imagen 2" loading="lazy"></button>
-        <button type="button" data-src="fotos/d2-03.jpg" data-pie="Jornada 2 · registro 3"><img src="fotos/d2-03.jpg" alt="Avance de obra, jornada 2, imagen 3" loading="lazy"></button>
-        <button type="button" data-src="fotos/d2-04.jpg" data-pie="Jornada 2 · registro 4"><img src="fotos/d2-04.jpg" alt="Avance de obra, jornada 2, imagen 4" loading="lazy"></button>
-        <button type="button" data-src="fotos/d2-05.jpg" data-pie="Jornada 2 · registro 5"><img src="fotos/d2-05.jpg" alt="Avance de obra, jornada 2, imagen 5" loading="lazy"></button>
+      <h4>Segunda jornada</h4>
+      <p class="fecha">Miércoles 2 de septiembre — 5 registros</p>
+      <div class="tiras">
+        <button type="button" data-src="fotos/d2-01.jpg" data-pie="Segunda jornada, registro 1"><img src="fotos/d2-01.jpg" alt="Avance de obra, segunda jornada, registro 1" loading="lazy"></button>
+        <button type="button" data-src="fotos/d2-02.jpg" data-pie="Segunda jornada, registro 2"><img src="fotos/d2-02.jpg" alt="Avance de obra, segunda jornada, registro 2" loading="lazy"></button>
+        <button type="button" data-src="fotos/d2-03.jpg" data-pie="Segunda jornada, registro 3"><img src="fotos/d2-03.jpg" alt="Avance de obra, segunda jornada, registro 3" loading="lazy"></button>
+        <button type="button" data-src="fotos/d2-04.jpg" data-pie="Segunda jornada, registro 4"><img src="fotos/d2-04.jpg" alt="Avance de obra, segunda jornada, registro 4" loading="lazy"></button>
+        <button type="button" data-src="fotos/d2-05.jpg" data-pie="Segunda jornada, registro 5"><img src="fotos/d2-05.jpg" alt="Avance de obra, segunda jornada, registro 5" loading="lazy"></button>
       </div>
     </div>
 
     <div class="jornada">
-      <h4>Jornada 3 — Jueves</h4>
-      <p class="cuando">3 de septiembre · 4 registros</p>
-      <div class="galeria">
-        <button type="button" data-src="fotos/d3-01.jpg" data-pie="Jornada 3 · registro 1"><img src="fotos/d3-01.jpg" alt="Avance de obra, jornada 3, imagen 1" loading="lazy"></button>
-        <button type="button" data-src="fotos/d3-02.jpg" data-pie="Jornada 3 · registro 2"><img src="fotos/d3-02.jpg" alt="Avance de obra, jornada 3, imagen 2" loading="lazy"></button>
-        <button type="button" data-src="fotos/d3-03.jpg" data-pie="Jornada 3 · registro 3"><img src="fotos/d3-03.jpg" alt="Avance de obra, jornada 3, imagen 3" loading="lazy"></button>
-        <button type="button" data-src="fotos/d3-04.jpg" data-pie="Jornada 3 · registro 4"><img src="fotos/d3-04.jpg" alt="Avance de obra, jornada 3, imagen 4" loading="lazy"></button>
+      <h4>Tercera jornada</h4>
+      <p class="fecha">Jueves 3 de septiembre — 4 registros</p>
+      <div class="tiras">
+        <button type="button" data-src="fotos/d3-01.jpg" data-pie="Tercera jornada, registro 1"><img src="fotos/d3-01.jpg" alt="Avance de obra, tercera jornada, registro 1" loading="lazy"></button>
+        <button type="button" data-src="fotos/d3-02.jpg" data-pie="Tercera jornada, registro 2"><img src="fotos/d3-02.jpg" alt="Avance de obra, tercera jornada, registro 2" loading="lazy"></button>
+        <button type="button" data-src="fotos/d3-03.jpg" data-pie="Tercera jornada, registro 3"><img src="fotos/d3-03.jpg" alt="Avance de obra, tercera jornada, registro 3" loading="lazy"></button>
+        <button type="button" data-src="fotos/d3-04.jpg" data-pie="Tercera jornada, registro 4"><img src="fotos/d3-04.jpg" alt="Avance de obra, tercera jornada, registro 4" loading="lazy"></button>
       </div>
     </div>
   </section>
-
-  <div id="visor" hidden>
-    <button type="button" class="cerrar" id="visor-cerrar">Cerrar ✕</button>
-    <img id="visor-img" src="" alt="">
-    <p class="pie" id="visor-pie"></p>
-  </div>
 
   <footer>
-    <p><strong>Nota técnica.</strong> Las columnas <code>Progreso</code>, <code>$ Plan</code>, <code>$ Actual</code> y <code>Δ $</code> del tablero Portafolio 2026 son de tipo espejo; la API de monday.com no entrega sus valores calculados. Las cifras financieras de Remodelación Oficinas TT se leyeron directamente de su tablero de tareas.</p>
-    <p>Datos leídos el 24 de septiembre de 2026. Documento interno.</p>
+    <p>Las columnas de progreso, plan, actual y delta del tablero Portafolio 2026 son de tipo espejo, y la API de monday.com no entrega sus valores calculados. Las cifras financieras de Remodelación Oficinas TT se leyeron directamente de su tablero de faenas.</p>
+    <p>Datos tomados de <a href="https://ehmillaa.monday.com/boards/18396373679">monday.com</a> el 27 de septiembre de 2026. Documento interno.</p>
   </footer>
 </div>
 
+<div id="visor" hidden>
+  <button type="button" class="salir" id="cerrar-visor">Cerrar</button>
+  <img id="visor-img" src="" alt="">
+  <p class="rotulo-foto" id="visor-pie"></p>
+</div>
+
 <script>
-const PROYECTOS = [
+const OBRAS = [
   {n:"Conexión sistema diesel 100-4", c:"PMO-25-12", rag:"atrasado", ragL:"Atrasado", fase:"En curso", tipo:"Proyecto", costo:null},
   {n:"Laboratorio", c:"PMO-25-04", rag:"atrasado", ragL:"Atrasado", fase:"En curso", tipo:"Proyecto", costo:null},
-  {n:"Remodelación Oficinas TT (1-2)", c:"TT", rag:"sin-definir", ragL:"Sin definir", fase:"En curso", tipo:"Mejora", costo:85000, det:"tt"},
+  {n:"Remodelación Oficinas TT", c:"Fases 1 y 2", rag:"sin-definir", ragL:"Sin semáforo", fase:"En curso", tipo:"Mejora", costo:85000, det:true},
   {n:"Sistema eléctrico Oficinas MOTI y TT", c:null, rag:"al-dia", ragL:"Al día", fase:"En curso", tipo:"Mejora", costo:null},
   {n:"Recirculación P-1001/1004", c:"PMO-25-10", rag:"al-dia", ragL:"Al día", fase:"En curso", tipo:"Mejora", costo:null},
-  {n:"Guardavidas para calle en MOTI", c:"HSE-26-07", rag:"sin-definir", ragL:"Sin definir", fase:"Planificación", tipo:"Mejora", costo:15000},
+  {n:"Guardavidas para calle en MOTI", c:"HSE-26-07", rag:"sin-definir", ragL:"Sin semáforo", fase:"Planificación", tipo:"Mejora", costo:15000},
   {n:"Tanque 220-4", c:"MAN-024-014", rag:"al-dia", ragL:"Al día", fase:"Completado", tipo:"Proyecto", costo:null},
   {n:"Sala de capacitación TT", c:"PMO-26-01", rag:"al-dia", ragL:"Al día", fase:"Completado", tipo:"Mejora", costo:null},
-  {n:"Sistema para venteo en nivel 14", c:"PMO-25-14", rag:"al-dia", ragL:"Al día", fase:"Completado", tipo:"Mejora", costo:null},
-  {n:"Certificación ISCC", c:"PMO-25-09", rag:"sin-definir", ragL:"Sin definir", fase:"Completado", tipo:null, costo:null},
-  {n:"Cafetería", c:"PMO-26-02", rag:"sin-definir", ragL:"Sin definir", fase:"Completado", tipo:null, costo:null}
+  {n:"Venteo en nivel 14", c:"PMO-25-14", rag:"al-dia", ragL:"Al día", fase:"Completado", tipo:"Mejora", costo:null},
+  {n:"Certificación ISCC", c:"PMO-25-09", rag:"sin-definir", ragL:"Sin semáforo", fase:"Completado", tipo:null, costo:null},
+  {n:"Cafetería", c:"PMO-26-02", rag:"sin-definir", ragL:"Sin semáforo", fase:"Completado", tipo:null, costo:null}
 ];
 
-const DETALLE_TT = {
-  titulo:"Remodelación Oficinas TT (1-2)",
-  kpis:[
-    {n:"18", l:"Tareas"}, {n:"4", l:"Bloqueadas", k:"alarm"},
-    {n:"66,300", l:"$ Plan en tareas"}, {n:"54,166", l:"$ Actual (82%)"}
-  ],
-  grupos:[
-    {g:"Oficina A — Planificación", t:[
-      {n:"Plan de Mejora", o:"R. Cardoze", s:"exec", sL:"En ejecución", p:null, a:null},
-      {n:"Aceptación Plan de Mejora", o:"Esteban Millaa", s:"ok", sL:"Listo", p:null, a:null}
-    ]},
-    {g:"Oficina A — Ejecución y Control", t:[
-      {n:"1. Obras infraestructura", o:"R. Cardoze", s:"ok", sL:"Listo", p:null, a:null},
-      {n:"2. Acometida eléctrica", o:null, s:"ok", sL:"Listo", p:3900, a:4199.75, over:true},
-      {n:"3. Muebles", o:"R. Cardoze", s:"ok", sL:"Listo", p:8900, a:6408.86},
-      {n:"4. Aires Acondicionados – Compra", o:"R. Cardoze", s:"ok", sL:"Listo", p:1800, a:600},
-      {n:"5. Cuadros / Decoración de oficinas", o:"R. Cardoze", s:"ok", sL:"Listo", p:null, a:3048.10, noplan:true},
-      {n:"6. Costo Contingencia", o:null, s:"ok", sL:"Listo", p:2000, a:null}
-    ]},
-    {g:"Oficina A — Cierre", t:[
-      {n:"Acta de Cierre Firmada", o:"R. Cardoze", s:"block", sL:"Bloqueado", p:null, a:null},
-      {n:"Revisión de Doc. y Costos", o:"R. Cardoze", s:"block", sL:"Bloqueado", p:null, a:null},
-      {n:"Avance fotográfico", o:"R. Cardoze", s:"ok", sL:"Listo", p:null, a:null}
-    ]},
-    {g:"Oficina Contabilidad — Ejecución y Control", t:[
-      {n:"1. Obras infraestructura", o:"R. Cardoze", s:"exec", sL:"En ejecución", p:25500, a:25500},
-      {n:"2. Muebles", o:"R. Cardoze", s:"exec", sL:"En ejecución", p:18900, a:14408.89},
-      {n:"3. Aires Acondicionados – Compra", o:"R. Cardoze", s:"ok", sL:"Listo", p:2800, a:null},
-      {n:"4. Costo Contingencia", o:null, s:"ok", sL:"Listo", p:2500, a:null}
-    ]},
-    {g:"Oficina de Contabilidad — Cierre", t:[
-      {n:"Acta de Cierre Firmada", o:null, s:"block", sL:"Bloqueado", p:null, a:null},
-      {n:"Revisión de Doc. y Costos", o:null, s:"block", sL:"Bloqueado", p:null, a:null},
-      {n:"Avance fotográfico", o:null, s:"ok", sL:"Listo", p:null, a:null}
-    ]}
-  ]
-};
+const FRENTES = [
+  {g:"Planificación", s:"Oficina A", t:[
+    {n:"Plan de mejora", o:"R. Cardoze", e:"curso", eL:"En ejecución", m:"ago 25 – oct 26", p:null, a:null},
+    {n:"Aceptación del plan", o:"Esteban Millaa", e:"ok", eL:"Listo", m:null, p:null, a:null}
+  ]},
+  {g:"Ejecución y control", s:"Oficina A", t:[
+    {n:"Obras de infraestructura", o:"R. Cardoze", e:"ok", eL:"Listo", m:null, p:null, a:null},
+    {n:"Acometida eléctrica", o:null, e:"ok", eL:"Listo", m:null, p:3900, a:4199.75, sobre:true},
+    {n:"Muebles", o:"R. Cardoze", e:"ok", eL:"Listo", m:"sep 2 – sep 16", p:8900, a:6408.86},
+    {n:"Aires acondicionados", o:"R. Cardoze", e:"ok", eL:"Listo", m:"sep 2 – sep 16", p:1800, a:600},
+    {n:"Cuadros y decoración", o:"R. Cardoze", e:"ok", eL:"Listo", m:"ago 5 – ago 21", p:null, a:3048.10, sinplan:true},
+    {n:"Costo de contingencia", o:null, e:"ok", eL:"Listo", m:null, p:2000, a:null}
+  ]},
+  {g:"Cierre", s:"Oficina A", t:[
+    {n:"Acta de cierre firmada", o:"R. Cardoze", e:"trab", eL:"Bloqueado", m:null, p:null, a:null},
+    {n:"Revisión de documentos y costos", o:"R. Cardoze", e:"trab", eL:"Bloqueado", m:null, p:null, a:null},
+    {n:"Avance fotográfico", o:"R. Cardoze", e:"ok", eL:"Listo", m:null, p:null, a:null}
+  ]},
+  {g:"Ejecución y control", s:"Oficina de Contabilidad", t:[
+    {n:"Obras de infraestructura", o:"R. Cardoze", e:"curso", eL:"En ejecución", m:null, p:25500, a:25500},
+    {n:"Muebles", o:"R. Cardoze", e:"curso", eL:"En ejecución", m:null, p:18900, a:14408.89},
+    {n:"Aires acondicionados", o:"R. Cardoze", e:"ok", eL:"Listo", m:null, p:2800, a:null},
+    {n:"Costo de contingencia", o:null, e:"ok", eL:"Listo", m:null, p:2500, a:null}
+  ]},
+  {g:"Cierre", s:"Oficina de Contabilidad", t:[
+    {n:"Acta de cierre firmada", o:null, e:"trab", eL:"Bloqueado", m:null, p:null, a:null},
+    {n:"Revisión de documentos y costos", o:null, e:"trab", eL:"Bloqueado", m:null, p:null, a:null},
+    {n:"Avance fotográfico", o:null, e:"ok", eL:"Listo", m:null, p:null, a:null}
+  ]}
+];
 
-const PCLASS = {"al-dia":"p-ok","atrasado":"p-late","sin-definir":"p-undef","ok":"p-ok","exec":"p-risk","block":"p-block"};
-const money = v => v == null ? null : v.toLocaleString("es-MX",{minimumFractionDigits:2, maximumFractionDigits:2});
+const RIEL = {"al-dia":"r-ok","atrasado":"r-late","sin-definir":"r-none"};
+const plata = v => v == null ? null : v.toLocaleString("es-MX",{minimumFractionDigits:2,maximumFractionDigits:2});
 let fRag = "todos", fFase = "todas";
 
-function pintarTabla(){
-  const vis = PROYECTOS.filter(p =>
-    (fRag === "todos" || p.rag === fRag) && (fFase === "todas" || p.fase === fFase));
-  const tb = document.getElementById("tbody");
-  if(!vis.length){
-    tb.innerHTML = '<tr><td colspan="6" class="empty">Ningún proyecto coincide con estos filtros.</td></tr>';
-    return;
-  }
-  tb.innerHTML = vis.map(p => {
-    const i = PROYECTOS.indexOf(p);
-    return `<tr ${p.det ? `class="clickable" tabindex="0" data-i="${i}"` : ""}>
-      <td class="proj">${p.n}${p.c ? `<span class="sub">${p.c}</span>` : ""}</td>
-      <td><span class="pill ${PCLASS[p.rag]}">${p.ragL}</span></td>
-      <td>${p.fase}</td>
-      <td>${p.tipo || '<span class="dash">—</span>'}</td>
-      <td class="num">${p.costo ? p.costo.toLocaleString("es-MX") : '<span class="dash">—</span>'}</td>
-      <td class="chev">${p.det ? "›" : ""}</td>
-    </tr>`;
-  }).join("");
+function pintar(){
+  const vis = OBRAS.filter(o => (fRag==="todos"||o.rag===fRag) && (fFase==="todas"||o.fase===fFase));
+  const tb = document.getElementById("cuerpo");
+  if(!vis.length){ tb.innerHTML = '<tr><td colspan="6" class="nada">Ninguna iniciativa coincide con estos filtros.</td></tr>'; return; }
+  tb.innerHTML = vis.map(o => `<tr class="${RIEL[o.rag]}${o.det?" abrible":""}"${o.det?' tabindex="0"':''}>
+      <td><span class="obra">${o.n}</span>${o.c?`<span class="clave">${o.c}</span>`:""}</td>
+      <td class="estado">${o.ragL}</td>
+      <td class="estado">${o.fase}</td>
+      <td class="estado">${o.tipo||'<span class="vacio">sin tipo</span>'}</td>
+      <td class="cifra">${o.costo?o.costo.toLocaleString("es-MX"):'<span class="vacio">sin cargar</span>'}</td>
+      <td>${o.det?'<span class="entrar">Ver obra</span>':""}</td>
+    </tr>`).join("");
 }
 
 function abrirDetalle(){
-  const d = DETALLE_TT;
   document.getElementById("detalle").innerHTML = `
-    <button class="back" id="volver">← Volver a proyectos</button>
-    <div class="dhead">
-      <h3>${d.titulo}</h3>
-      <div class="dmeta">
-        <span class="pill p-undef">Sin definir</span>
-        <span style="font-size:13px;color:var(--muted)">En curso · Mejora · Empresa TT · Costo portafolio 85,000</span>
-      </div>
+    <button class="volver" id="volver">← Volver al portafolio</button>
+    <div class="det-cabeza">
+      <h3>Remodelación Oficinas TT</h3>
+      <p>Fases 1 y 2 · empresa TT · 85,000 registrados en portafolio</p>
     </div>
-    <div class="kpis">${d.kpis.map(k =>
-      `<div class="kpi ${k.k || ''}"><span class="n">${k.n}</span><span class="l">${k.l}</span></div>`).join("")}</div>
-    ${d.grupos.map(g => `<div class="grp"><h4>${g.g}</h4><ul class="tasks">${g.t.map(t => {
-      let m = "";
-      if(t.p != null || t.a != null){
-        const plan = t.p != null ? `Plan ${money(t.p)}` : `<span class="none">sin plan</span>`;
-        const act  = t.a != null ? `Real ${money(t.a)}` : `Real —`;
-        m = `${plan} · <span class="${t.over ? 'over' : ''}">${act}</span>`;
-      }
-      return `<li>
-        <span class="pill ${PCLASS[t.s]}">${t.sL}</span>
-        <span class="tname"><b>${t.n}</b><span class="towner">${t.o || "sin responsable"}</span></span>
-        <span class="tmoney">${m}</span>
-      </li>`;
-    }).join("")}</ul></div>`).join("")}`;
-  document.getElementById("lista").hidden = true;
+    <div class="medidas">
+      <div class="medida"><b>18</b><span>faenas</span></div>
+      <div class="medida alerta"><b>4</b><span>bloqueadas</span></div>
+      <div class="medida"><b>66,300</b><span>plan de faenas</span></div>
+      <div class="medida"><b>54,166</b><span>ejecutado, 82%</span></div>
+    </div>
+    ${FRENTES.map(f => `<div class="frente">
+      <h4>${f.g}</h4><p class="sitio">${f.s}</p>
+      <ul class="faenas">${f.t.map(t => {
+        let d = "";
+        if(t.p != null || t.a != null){
+          const pl = t.p != null ? `plan ${plata(t.p)}` : `<span class="sin">sin plan</span>`;
+          const ac = t.a != null ? `real ${plata(t.a)}` : `real —`;
+          d = `${pl} &nbsp; <span class="${t.sobre?'sobre':''}">${ac}</span>`;
+        }
+        return `<li class="f-${t.e}">
+          <span class="que"><b>${t.n}</b><span class="quien">${t.o||"sin responsable"} · ${t.eL}</span></span>
+          <span class="marca">${t.m||""}</span>
+          <span class="plata">${d}</span>
+        </li>`;
+      }).join("")}</ul>
+    </div>`).join("")}`;
+  document.getElementById("listado").hidden = true;
   document.getElementById("detalle").hidden = false;
-  document.getElementById("volver").addEventListener("click", () => {
+  const v = document.getElementById("volver");
+  v.addEventListener("click", () => {
     document.getElementById("detalle").hidden = true;
-    document.getElementById("lista").hidden = false;
+    document.getElementById("listado").hidden = false;
   });
-  document.getElementById("volver").focus();
+  v.focus();
 }
 
-// Tabs
-const tabs = [...document.querySelectorAll(".tab")];
-tabs.forEach(t => t.addEventListener("click", () => {
-  tabs.forEach(o => {
-    const on = o === t;
+const pestanas = [...document.querySelectorAll(".nav button")];
+pestanas.forEach(p => p.addEventListener("click", () => {
+  pestanas.forEach(o => {
+    const on = o === p;
     o.setAttribute("aria-selected", on);
     document.getElementById(o.getAttribute("aria-controls")).hidden = !on;
   });
 }));
 
-// Filtros
-function wire(id, set){
+function conectar(id, set){
   document.getElementById(id).addEventListener("click", e => {
-    const b = e.target.closest(".chip");
+    const b = e.target.closest("button");
     if(!b) return;
-    [...e.currentTarget.querySelectorAll(".chip")].forEach(c => c.setAttribute("aria-pressed", c === b));
-    set(b.dataset.v);
-    pintarTabla();
+    [...e.currentTarget.querySelectorAll("button")].forEach(c => c.setAttribute("aria-pressed", c === b));
+    set(b.dataset.v); pintar();
   });
 }
-wire("f-rag",  v => fRag = v);
-wire("f-fase", v => fFase = v);
+conectar("f-rag", v => fRag = v);
+conectar("f-fase", v => fFase = v);
 
-// Drill-down
-document.getElementById("tbody").addEventListener("click", e => {
-  if(e.target.closest("tr.clickable")) abrirDetalle();
+document.getElementById("cuerpo").addEventListener("click", e => {
+  if(e.target.closest("tr.abrible")) abrirDetalle();
 });
-document.getElementById("tbody").addEventListener("keydown", e => {
-  if((e.key === "Enter" || e.key === " ") && e.target.closest("tr.clickable")){
-    e.preventDefault(); abrirDetalle();
-  }
+document.getElementById("cuerpo").addEventListener("keydown", e => {
+  if((e.key === "Enter" || e.key === " ") && e.target.closest("tr.abrible")){ e.preventDefault(); abrirDetalle(); }
 });
 
-// Visor de fotos
 const visor = document.getElementById("visor");
-const visorImg = document.getElementById("visor-img");
-const visorPie = document.getElementById("visor-pie");
-let ultimoFoco = null;
-
-function abrirFoto(btn){
-  ultimoFoco = btn;
-  visorImg.src = btn.dataset.src;
-  visorImg.alt = btn.querySelector("img").alt;
-  visorPie.textContent = btn.dataset.pie || "";
-  visor.hidden = false;
-  document.getElementById("visor-cerrar").focus();
-}
-function cerrarFoto(){
-  visor.hidden = true;
-  visorImg.src = "";
-  if(ultimoFoco) ultimoFoco.focus();
-}
-
-document.getElementById("pane-fotos").addEventListener("click", e => {
-  const b = e.target.closest(".galeria button");
-  if(b) abrirFoto(b);
+const vImg = document.getElementById("visor-img");
+const vPie = document.getElementById("visor-pie");
+let previo = null;
+document.getElementById("p-obra").addEventListener("click", e => {
+  const b = e.target.closest(".tiras button");
+  if(!b) return;
+  previo = b; vImg.src = b.dataset.src; vImg.alt = b.querySelector("img").alt;
+  vPie.textContent = b.dataset.pie; visor.hidden = false;
+  document.getElementById("cerrar-visor").focus();
 });
-document.getElementById("visor-cerrar").addEventListener("click", cerrarFoto);
-visor.addEventListener("click", e => { if(e.target === visor || e.target === visorImg) cerrarFoto(); });
-document.addEventListener("keydown", e => { if(e.key === "Escape" && !visor.hidden) cerrarFoto(); });
+function cerrar(){ visor.hidden = true; vImg.src = ""; if(previo) previo.focus(); }
+document.getElementById("cerrar-visor").addEventListener("click", cerrar);
+visor.addEventListener("click", e => { if(e.target === visor || e.target === vImg) cerrar(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape" && !visor.hidden) cerrar(); });
 
-pintarTabla();
+pintar();
 </script>
 </body>
 </html>
