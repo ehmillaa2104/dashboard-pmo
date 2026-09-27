@@ -6,244 +6,352 @@
 <title>Portafolio PMO 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <style>
   :root{
-    color-scheme:light;
-    --deck:#E9EBE6; --paper:#F7F8F5;
-    --ink:#16242E; --ink2:#5C6E79;
-    --rule:#C8CEC8; --rule-soft:#DCE0D9;
-    --signal:#9A6206;
-    --ok:#2E6B4F; --late:#9C2B2B; --none:#8C9490;
-    --tec:"Archivo", "Helvetica Neue", Arial, sans-serif;
-    --pro:"Source Serif 4", Georgia, "Times New Roman", serif;
-  }
-  @media (prefers-color-scheme:dark){
-    :root:not([data-theme="light"]){
-      color-scheme:dark;
-      --deck:#12181B; --paper:#1A2226;
-      --ink:#E4E8E3; --ink2:#98A5A6;
-      --rule:#2C363A; --rule-soft:#232C30;
-      --signal:#D9A441;
-      --ok:#4E9A72; --late:#D46A6A; --none:#79837F;
-    }
-  }
-  :root[data-theme="dark"]{
     color-scheme:dark;
-    --deck:#12181B; --paper:#1A2226;
-    --ink:#E4E8E3; --ink2:#98A5A6;
-    --rule:#2C363A; --rule-soft:#232C30;
-    --signal:#D9A441;
-    --ok:#4E9A72; --late:#D46A6A; --none:#79837F;
+    --void:#05090F; --panel:#0A121C; --panel2:#0E1926;
+    --line:#16303F; --line2:#1E4356;
+    --glow:#3DE1FF; --glow2:#7B8CFF;
+    --txt:#DCEEF7; --txt2:#84A5BA;
+    --ok:#32E39B; --late:#FF5673; --warn:#FFB13D; --none:#4E6B82;
+    --ui:"Chakra Petch","Segoe UI",system-ui,sans-serif;
+    --num:"JetBrains Mono",ui-monospace,Consolas,monospace;
   }
-
   *{box-sizing:border-box}
-  body{margin:0;background:var(--deck);color:var(--ink);font-family:var(--tec);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
-  .hoja{max-width:1000px;margin:0 auto;padding-inline:22px;padding-block:0 60px}
+  html{scrollbar-color:var(--line2) var(--void);scrollbar-width:thin}
+  ::-webkit-scrollbar{width:11px;height:11px}
+  ::-webkit-scrollbar-track{background:var(--void)}
+  ::-webkit-scrollbar-thumb{background:var(--line2);border:2px solid var(--void)}
+  ::-webkit-scrollbar-thumb:hover{background:var(--glow)}
+  ::selection{background:rgba(61,225,255,.28);color:#fff}
+  :focus-visible{outline:2px solid var(--glow);outline-offset:3px}
 
-  /* Bloque de título — convención de plano de ingeniería */
-  .rotulo{display:flex;flex-wrap:wrap;gap:6px 28px;align-items:baseline;
-    border-bottom:2px solid var(--ink);padding-block:26px 12px;margin-bottom:0}
-  .rotulo h1{font-size:clamp(25px,4.4vw,34px);font-weight:700;letter-spacing:-.015em;margin:0;line-height:1}
-  .rotulo .org{font-size:14px;color:var(--ink2);margin:0}
-  .rotulo .dato{margin-left:auto;text-align:right;font-size:13px;color:var(--ink2);line-height:1.35}
-  .rotulo .dato b{display:block;color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  body{margin:0;background:var(--void);color:var(--txt);font-family:var(--ui);font-size:15px;
+    line-height:1.5;caret-color:var(--glow);-webkit-font-smoothing:antialiased;
+    font-variant-numeric:tabular-nums}
+  .consola{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:0 64px}
 
-  /* Héroe: la frase, no el número */
-  .cabeza{padding-block:34px 26px;border-bottom:1px solid var(--rule)}
-  .veredicto{font-family:var(--pro);font-size:clamp(23px,3.9vw,33px);line-height:1.28;font-weight:400;
-    margin:0 0 26px;max-width:22ch;text-wrap:balance}
-  .veredicto em{font-style:normal;color:var(--late);font-weight:600}
+  /* Barra de sistema */
+  .sistema{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:center;
+    padding-block:14px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--txt2)}
+  .sistema .val{font-family:var(--num);color:var(--txt);font-weight:500}
+  .vivo{display:inline-flex;align-items:center;gap:7px;color:var(--ok)}
+  .punto{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(50,227,155,.6);animation:late 2.6s ease-out infinite}
+  @keyframes late{70%{box-shadow:0 0 0 7px rgba(50,227,155,0)}100%{box-shadow:0 0 0 0 rgba(50,227,155,0)}}
 
-  /* Aforo: una sola medida a todo lo ancho */
-  .aforo{display:flex;height:22px;width:100%;overflow:hidden;border:1px solid var(--ink)}
-  .aforo span{display:block}
-  .lecturas{display:flex;margin-top:9px;width:100%}
-  .lectura{padding-right:14px}
-  .lectura b{display:block;font-size:19px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.1}
-  .lectura span{font-size:12.5px;color:var(--ink2)}
+  /* Encabezado */
+  .cabecera{padding-block:30px 26px}
+  h1{font-size:clamp(30px,5.4vw,46px);font-weight:700;letter-spacing:-.03em;margin:0 0 6px;line-height:1}
+  .sub{color:var(--txt2);font-size:14.5px;margin:0}
+
+  /* Alerta crítica */
+  .alerta{display:flex;gap:14px;align-items:flex-start;margin-top:24px;padding:16px 18px;
+    background:linear-gradient(90deg,rgba(255,86,115,.13),rgba(255,86,115,.02));
+    border:1px solid rgba(255,86,115,.34)}
+  .alerta svg{flex:none;margin-top:1px;color:var(--late)}
+  .alerta h2{font-size:16px;font-weight:600;margin:0 0 3px;color:var(--late);letter-spacing:-.01em}
+  .alerta p{margin:0;font-size:14px;color:var(--txt);max-width:72ch}
+
+  /* Rejilla de módulos */
+  .rejilla{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:22px}
+  .modulo{background:var(--panel);border:1px solid var(--line);padding:18px;position:relative;
+    opacity:0;animation:resolver .5s cubic-bezier(.16,1,.3,1) forwards}
+  .modulo::before,.modulo::after{content:"";position:absolute;width:9px;height:9px;border:1px solid var(--glow);opacity:.5}
+  .modulo::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+  .modulo::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+  .modulo:nth-child(1){animation-delay:.04s} .modulo:nth-child(2){animation-delay:.1s}
+  .modulo:nth-child(3){animation-delay:.16s} .modulo:nth-child(4){animation-delay:.22s}
+  @keyframes resolver{from{opacity:0;filter:blur(7px);transform:translateY(9px)}to{opacity:1;filter:blur(0);transform:none}}
+  @media (prefers-reduced-motion:reduce){
+    .modulo{opacity:1;animation:none}
+    .punto{animation:none}
+    .arco-val{stroke-dasharray:none!important;animation:none!important}
+  }
+  .m-4{grid-column:span 4} .m-5{grid-column:span 5} .m-7{grid-column:span 7}
+  .m-8{grid-column:span 8} .m-12{grid-column:span 12}
+
+  .titulo-mod{font-size:12.5px;font-weight:600;color:var(--txt2);margin:0 0 14px;letter-spacing:.01em}
+
+  /* Aguja radial */
+  .radial{display:flex;flex-direction:column;align-items:center;gap:2px}
+  .radial svg{width:100%;max-width:186px;height:auto}
+  .arco-fondo{fill:none;stroke:var(--line2);stroke-width:13;stroke-linecap:round}
+  .arco-val{fill:none;stroke:var(--glow);stroke-width:13;stroke-linecap:round;
+    filter:drop-shadow(0 0 7px rgba(61,225,255,.6));animation:barrer 1.5s cubic-bezier(.16,1,.3,1) forwards}
+  @keyframes barrer{from{stroke-dasharray:0 439.8}}
+  .radial .cifra{font-family:var(--num);font-size:38px;font-weight:700;fill:var(--txt)}
+  .radial .cifra-sub{font-family:var(--ui);font-size:12px;fill:var(--txt2)}
+  .radial figcaption{font-size:13px;color:var(--txt2);text-align:center;margin-top:6px;max-width:26ch}
+
+  /* Anillos */
+  .anillos{display:flex;gap:22px;flex-wrap:wrap;justify-content:space-around}
+  .anillo{text-align:center;flex:1;min-width:120px}
+  .anillo svg{width:100%;max-width:124px;height:auto}
+  .anillo .centro{font-family:var(--num);font-size:26px;font-weight:700;fill:var(--txt)}
+  .leyenda{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:5px;font-size:13px}
+  .leyenda li{display:flex;align-items:center;gap:8px}
+  .leyenda i{width:9px;height:9px;flex:none;border-radius:2px}
+  .leyenda .n{margin-left:auto;font-family:var(--num);color:var(--txt2);font-weight:500}
+
+  /* Matriz de faenas */
+  .matriz{display:grid;grid-template-columns:repeat(auto-fill,minmax(30px,1fr));gap:5px}
+  .celda{aspect-ratio:1;border:1px solid var(--line2);background:var(--panel2);position:relative}
+  .celda[data-e="ok"]{background:rgba(50,227,155,.2);border-color:var(--ok)}
+  .celda[data-e="curso"]{background:rgba(255,177,61,.22);border-color:var(--warn)}
+  .celda[data-e="trab"]{background:rgba(255,86,115,.24);border-color:var(--late);
+    box-shadow:0 0 9px rgba(255,86,115,.45)}
+  .celda:hover{outline:1px solid var(--glow);outline-offset:1px}
+
+  /* Barras plan vs real */
+  .partidas{display:flex;flex-direction:column;gap:13px;margin:0;padding:0}
+  .partida{display:grid;grid-template-columns:minmax(120px,1.5fr) 3fr minmax(150px,auto);
+    gap:12px;align-items:center;font-size:13.5px}
+  .partida .nombre{color:var(--txt);overflow-wrap:anywhere}
+  .partida .nombre small{display:block;color:var(--txt2);font-size:12px}
+  .pistas{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .pista{height:9px;background:var(--panel2);border:1px solid var(--line);position:relative}
+  .pista span{position:absolute;inset:0 auto 0 0;display:block}
+  .pista.plan span{background:var(--line2)}
+  .pista.real span{background:var(--glow);box-shadow:0 0 8px rgba(61,225,255,.5)}
+  .pista.real.exceso span{background:var(--late);box-shadow:0 0 8px rgba(255,86,115,.55)}
+  .pista.real.sinplan span{background:var(--warn);box-shadow:0 0 8px rgba(255,177,61,.5)}
+  .partida .montos{font-family:var(--num);font-size:12.5px;color:var(--txt2);text-align:right;white-space:nowrap}
+  .partida .montos b{color:var(--txt);font-weight:500}
+  .partida .montos .malo{color:var(--late)}
+  .clave-barras{display:flex;gap:16px;font-size:12px;color:var(--txt2);margin-top:14px}
+  .clave-barras span{display:flex;align-items:center;gap:6px}
+  .clave-barras i{width:14px;height:8px;display:block}
 
   /* Navegación */
-  .nav{display:flex;gap:26px;border-bottom:1px solid var(--rule);margin-bottom:30px;overflow-x:auto}
+  .nav{display:flex;gap:4px;margin:26px 0 20px;border-bottom:1px solid var(--line);overflow-x:auto}
   .nav button{appearance:none;background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;
-    font-family:var(--tec);font-size:15px;font-weight:500;color:var(--ink2);
-    padding:14px 0;cursor:pointer;white-space:nowrap}
-  .nav button:hover{color:var(--ink)}
-  .nav button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--signal);font-weight:600}
-  .nav button:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+    font-family:var(--ui);font-size:14.5px;font-weight:600;color:var(--txt2);
+    padding:12px 16px;cursor:pointer;white-space:nowrap;transition:color .18s}
+  .nav button:hover{color:var(--txt);background:var(--panel)}
+  .nav button[aria-selected="true"]{color:var(--glow);border-bottom-color:var(--glow)}
 
-  .pane{animation:entra .16s ease}
-  @keyframes entra{from{opacity:.55}to{opacity:1}}
-  @media (prefers-reduced-motion:reduce){.pane{animation:none}}
-
-  h2.rubro{font-family:var(--pro);font-size:19px;font-weight:600;margin:0 0 12px;letter-spacing:-.01em}
-
-  /* Lectura del periodo */
-  .lectura-periodo{font-family:var(--pro);font-size:16.5px;line-height:1.62;color:var(--ink);
-    max-width:66ch;margin:0 0 34px;padding-left:16px;border-left:2px solid var(--signal)}
+  .pane{animation:resolver .34s cubic-bezier(.16,1,.3,1)}
+  h2.rubro{font-size:17px;font-weight:600;margin:0 0 14px;letter-spacing:-.01em}
+  .prosa{font-size:15px;line-height:1.66;color:var(--txt);max-width:70ch;margin:0 0 26px}
 
   /* Filtros */
-  .filtros{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px;align-items:center}
-  .filtros .quien{font-size:13px;color:var(--ink2);margin-right:6px}
-  .filtros button{appearance:none;font-family:var(--tec);font-size:13px;font-weight:500;
-    padding:4px 10px;border:1px solid var(--rule);background:transparent;color:var(--ink2);cursor:pointer}
-  .filtros button:hover{color:var(--ink);border-color:var(--ink2)}
-  .filtros button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--deck)}
-  .filtros button:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
-  .grupo-filtro{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-right:22px}
+  .filtros{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:16px}
+  .filtros .quien{font-size:12.5px;color:var(--txt2);margin-right:4px}
+  .filtros button{appearance:none;font-family:var(--ui);font-size:12.5px;font-weight:600;
+    padding:5px 12px;border:1px solid var(--line2);background:var(--panel);color:var(--txt2);
+    cursor:pointer;border-radius:999px;transition:all .16s}
+  .filtros button:hover{color:var(--txt);border-color:var(--glow)}
+  .filtros button[aria-pressed="true"]{background:rgba(61,225,255,.16);border-color:var(--glow);color:var(--glow)}
+  .grupo-f{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-right:20px}
 
-  /* Datasheet */
-  .marco{overflow-x:auto;margin-top:18px}
-  table{border-collapse:collapse;width:100%;min-width:640px}
-  thead th{font-size:12.5px;font-weight:600;color:var(--ink2);text-align:left;
-    padding:0 12px 8px;border-bottom:1px solid var(--ink)}
-  thead th:first-child{padding-left:16px}
-  tbody td{padding:13px 12px;border-bottom:1px solid var(--rule-soft);vertical-align:baseline}
-  tbody td:first-child{padding-left:16px;position:relative}
-  tbody tr:last-child td{border-bottom:1px solid var(--rule)}
-  tbody td:first-child::before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:3px;background:var(--riel,transparent)}
-  tr.r-ok   {--riel:var(--ok)}
-  tr.r-late {--riel:var(--late)}
-  tr.r-none {--riel:var(--none)}
-  tr.abrible{cursor:pointer}
-  tr.abrible:hover{background:var(--paper)}
-  tr.abrible:focus-visible{outline:2px solid var(--signal);outline-offset:-2px}
-  .obra{font-weight:500;display:block}
-  .clave{font-size:12.5px;color:var(--ink2)}
-  .cifra{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-  .vacio{color:var(--none)}
-  .estado{font-size:13.5px}
-  .entrar{color:var(--signal);font-weight:600}
-  .nada{padding:30px 16px;color:var(--ink2);font-family:var(--pro);font-size:16px}
-  .pie-tabla{font-size:13px;color:var(--ink2);margin:12px 0 0}
+  /* Tabla */
+  .marco{overflow-x:auto;border:1px solid var(--line);background:var(--panel)}
+  table{border-collapse:collapse;width:100%;min-width:660px}
+  thead th{font-size:11.5px;font-weight:600;color:var(--txt2);text-align:left;padding:11px 14px;
+    background:var(--panel2);border-bottom:1px solid var(--line2)}
+  tbody td{padding:13px 14px;border-bottom:1px solid var(--line);font-size:14px}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:var(--panel2)}
+  tbody tr.abrible{cursor:pointer}
+  tbody tr.abrible:hover{background:rgba(61,225,255,.07)}
+  .chip{display:inline-flex;align-items:center;gap:7px;font-size:13px;white-space:nowrap}
+  .chip i{width:8px;height:8px;border-radius:50%;flex:none}
+  .c-ok i{background:var(--ok);box-shadow:0 0 7px rgba(50,227,155,.65)}
+  .c-late i{background:var(--late);box-shadow:0 0 7px rgba(255,86,115,.7)}
+  .c-none i{background:var(--none)}
+  .obra{font-weight:600;display:block}
+  .clave{font-family:var(--num);font-size:11.5px;color:var(--txt2)}
+  .cifra{text-align:right;font-family:var(--num);white-space:nowrap}
+  .sin{color:var(--none);font-size:12.5px}
+  .ir{color:var(--glow);font-weight:600;font-size:13px;display:inline-flex;align-items:center;gap:5px}
+  .nada{padding:34px 16px;color:var(--txt2);text-align:center}
 
   /* Detalle */
-  .volver{appearance:none;background:none;border:0;font-family:var(--tec);font-size:14px;font-weight:500;
-    color:var(--signal);cursor:pointer;padding:0;margin-bottom:18px}
-  .volver:hover{text-decoration:underline}
-  .volver:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
-  .det-cabeza{border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:22px;
-    display:flex;flex-wrap:wrap;gap:4px 22px;align-items:baseline}
-  .det-cabeza h3{font-size:24px;font-weight:700;margin:0;letter-spacing:-.015em}
-  .det-cabeza p{margin:0;font-size:13.5px;color:var(--ink2)}
-  .medidas{display:flex;flex-wrap:wrap;gap:0 40px;margin-bottom:30px;
-    border-bottom:1px solid var(--rule);padding-bottom:20px}
-  .medida b{display:block;font-size:24px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.15}
-  .medida span{font-size:12.5px;color:var(--ink2)}
-  .medida.alerta b{color:var(--late)}
-  .frente{margin-bottom:26px}
-  .frente h4{font-family:var(--pro);font-size:16px;font-weight:600;margin:0 0 2px}
-  .frente .sitio{font-size:12.5px;color:var(--ink2);margin:0 0 10px}
-  .faenas{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
-  .faenas li{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;
-    padding:11px 0 11px 16px;border-bottom:1px solid var(--rule-soft);position:relative;font-size:14px}
-  .faenas li::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;background:var(--riel,transparent)}
-  .f-ok{--riel:var(--ok)} .f-curso{--riel:var(--signal)} .f-trab{--riel:var(--late)}
-  .faenas .que{flex:1;min-width:190px}
-  .faenas .que b{font-weight:500;display:block}
-  .faenas .quien{font-size:12.5px;color:var(--ink2)}
-  .faenas .marca{font-size:12.5px;color:var(--ink2);width:92px}
-  .faenas .plata{font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums;text-align:right;min-width:170px}
-  .faenas .plata .sobre{color:var(--late);font-weight:600}
-  .faenas .plata .sin{color:var(--signal)}
+  .volver{appearance:none;background:none;border:1px solid var(--line2);color:var(--glow);
+    font-family:var(--ui);font-size:13px;font-weight:600;padding:7px 14px;cursor:pointer;margin-bottom:20px;
+    display:inline-flex;align-items:center;gap:7px;transition:border-color .16s}
+  .volver:hover{border-color:var(--glow)}
+  .det-cab{margin-bottom:20px}
+  .det-cab h3{font-size:25px;font-weight:700;margin:0 0 4px;letter-spacing:-.02em}
+  .det-cab p{margin:0;color:var(--txt2);font-size:13.5px}
+  .frente{margin-bottom:22px}
+  .frente h4{font-size:14.5px;font-weight:600;margin:0 0 2px}
+  .frente .sitio{font-size:12.5px;color:var(--txt2);margin:0 0 10px}
+  .faenas{list-style:none;margin:0;padding:0;border:1px solid var(--line);background:var(--panel)}
+  .faenas li{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;
+    padding:11px 14px;border-bottom:1px solid var(--line);font-size:13.5px}
+  .faenas li:last-child{border-bottom:0}
+  .faenas .que{flex:1;min-width:180px}
+  .faenas .que b{font-weight:600;display:block}
+  .faenas .quien{font-size:12px;color:var(--txt2)}
+  .faenas .plata{font-family:var(--num);font-size:12.5px;color:var(--txt2);text-align:right;min-width:168px}
+  .faenas .plata .malo{color:var(--late)}
+  .faenas .plata .aviso{color:var(--warn)}
 
   /* Hallazgos */
-  .hallazgo{padding:20px 0 20px 18px;border-bottom:1px solid var(--rule-soft);position:relative;max-width:70ch}
-  .hallazgo:last-child{border-bottom:0}
-  .hallazgo::before{content:"";position:absolute;left:0;top:22px;bottom:22px;width:3px;background:var(--riel)}
-  .h-grave{--riel:var(--late)} .h-medio{--riel:var(--signal)} .h-leve{--riel:var(--ink2)}
-  .hallazgo h3{font-family:var(--pro);font-size:18px;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}
-  .hallazgo p{font-family:var(--pro);font-size:16px;line-height:1.6;margin:0;color:var(--ink)}
+  .hallazgo{border:1px solid var(--line);background:var(--panel);padding:18px;margin-bottom:12px;max-width:none}
+  .hallazgo.grave{border-color:rgba(255,86,115,.4)}
+  .hallazgo .fila{display:flex;gap:12px;align-items:flex-start}
+  .hallazgo svg{flex:none;margin-top:2px}
+  .hallazgo.grave svg{color:var(--late)} .hallazgo.medio svg{color:var(--warn)} .hallazgo.leve svg{color:var(--txt2)}
+  .hallazgo h3{font-size:15.5px;font-weight:600;margin:0 0 5px;letter-spacing:-.01em}
+  .hallazgo p{margin:0;font-size:14px;line-height:1.62;color:var(--txt2);max-width:72ch}
 
-  /* Registro de obra */
-  .intro-fotos{font-family:var(--pro);font-size:16.5px;line-height:1.6;max-width:66ch;margin:0 0 30px;color:var(--ink)}
-  .jornada{margin-bottom:30px}
-  .jornada h4{font-family:var(--pro);font-size:17px;font-weight:600;margin:0 0 2px}
-  .jornada .fecha{font-size:12.5px;color:var(--ink2);margin:0 0 12px}
-  .tiras{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-  .tiras button{appearance:none;padding:0;border:1px solid var(--rule);background:var(--paper);
-    cursor:zoom-in;display:block;aspect-ratio:4/3;overflow:hidden}
-  .tiras button:hover{border-color:var(--signal)}
-  .tiras button:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
-  .tiras img{width:100%;height:100%;object-fit:cover;display:block;max-width:100%}
+  /* Registro */
+  .jornada{margin-bottom:26px}
+  .jornada h4{font-size:15px;font-weight:600;margin:0 0 2px}
+  .jornada .fecha{font-family:var(--num);font-size:12px;color:var(--txt2);margin:0 0 11px}
+  .tiras{display:grid;grid-template-columns:repeat(auto-fill,minmax(186px,1fr));gap:11px}
+  .tiras button{appearance:none;padding:0;border:1px solid var(--line2);background:var(--panel);
+    cursor:zoom-in;display:block;aspect-ratio:4/3;overflow:hidden;position:relative;transition:border-color .18s}
+  .tiras button:hover{border-color:var(--glow)}
+  .tiras img{width:100%;height:100%;object-fit:cover;display:block;max-width:100%;
+    filter:saturate(.88) contrast(1.04);transition:filter .22s}
+  .tiras button:hover img{filter:saturate(1) contrast(1)}
 
   #visor[hidden]{display:none}
-  #visor{position:fixed;inset:0;z-index:60;background:rgba(10,16,19,.94);
-    display:flex;align-items:center;justify-content:center;padding:22px}
-  #visor img{max-width:100%;max-height:82vh;object-fit:contain}
+  #visor{position:fixed;inset:0;z-index:70;background:rgba(3,7,12,.95);
+    display:flex;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(3px)}
+  #visor img{max-width:100%;max-height:82vh;object-fit:contain;border:1px solid var(--line2)}
   #visor .salir{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:18px;
-    appearance:none;background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;
-    font-family:var(--tec);font-size:14px;padding:7px 15px;cursor:pointer}
-  #visor .salir:hover{background:rgba(255,255,255,.14)}
-  #visor .rotulo-foto{position:absolute;bottom:calc(20px + env(safe-area-inset-bottom,0px));
-    left:0;right:0;text-align:center;color:rgba(255,255,255,.82);font-size:13px}
+    appearance:none;background:var(--panel);border:1px solid var(--line2);color:var(--txt);
+    font-family:var(--ui);font-size:13px;font-weight:600;padding:8px 15px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:7px}
+  #visor .salir:hover{border-color:var(--glow);color:var(--glow)}
+  #visor .pie{position:absolute;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:0;right:0;
+    text-align:center;color:var(--txt2);font-family:var(--num);font-size:12px}
 
-  footer{border-top:1px solid var(--rule);margin-top:42px;padding-top:20px;
-    font-size:13px;color:var(--ink2);max-width:74ch}
+  footer{border-top:1px solid var(--line);margin-top:40px;padding-top:20px;
+    font-size:12.5px;color:var(--txt2);max-width:80ch;line-height:1.62}
   footer p{margin:0 0 7px}
-  footer a{color:var(--signal)}
+  footer a{color:var(--glow)}
 
-  @media (max-width:640px){
-    .rotulo .dato{margin-left:0;text-align:left}
-    .medidas{gap:0 26px}
+  @media (max-width:900px){
+    .m-4,.m-5,.m-7,.m-8{grid-column:span 12}
+  }
+  @media (max-width:620px){
+    .partida{grid-template-columns:1fr;gap:6px}
+    .partida .montos{text-align:left}
     .faenas .plata{text-align:left;min-width:0}
   }
 </style>
 </head>
 <body>
-<div class="hoja">
+<div class="consola">
 
-  <div class="rotulo">
-    <div>
-      <h1>Portafolio 2026</h1>
-      <p class="org">Oficina de Gestión de Proyectos</p>
-    </div>
-    <div class="dato">
-      <b>11 iniciativas</b>
-      corte al 27 de septiembre
+  <div class="sistema">
+    <span class="vivo"><span class="punto"></span>Portafolio activo</span>
+    <span>Iniciativas <span class="val">11</span></span>
+    <span>En ejecución <span class="val">5</span></span>
+    <span>Faenas trabadas <span class="val" style="color:var(--late)">4</span></span>
+    <span style="margin-left:auto">Corte <span class="val">27.09.2026</span></span>
+  </div>
+
+  <div class="cabecera">
+    <h1>Portafolio 2026</h1>
+    <p class="sub">Oficina de Gestión de Proyectos · terminal MOTI y TT</p>
+
+    <div class="alerta">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/>
+      </svg>
+      <div>
+        <h2>Dos proyectos atrasados y cuatro faenas de cierre trabadas</h2>
+        <p>Conexión sistema diesel y Laboratorio siguen abiertos sin cronograma cargado. En Remodelación Oficinas TT, las cuatro faenas de cierre están bloqueadas y la obra no puede cerrarse.</p>
+      </div>
     </div>
   </div>
 
-  <div class="cabeza">
-    <p class="veredicto">Dos proyectos están <em>atrasados</em> y ambos siguen en ejecución.</p>
-    <div class="aforo" role="img" aria-label="Cinco proyectos al día, dos atrasados, cuatro sin semáforo asignado">
-      <span style="background:var(--ok);width:45.5%"></span>
-      <span style="background:var(--late);width:18.2%"></span>
-      <span style="background:var(--none);width:36.3%"></span>
+  <div class="rejilla">
+    <div class="modulo m-4">
+      <p class="titulo-mod">Ejecución presupuestal — Remodelación TT</p>
+      <figure class="radial" style="margin:0">
+        <svg viewBox="0 0 200 178" role="img" aria-label="81.7 por ciento del presupuesto de faenas ejecutado">
+          <circle class="arco-fondo" cx="100" cy="100" r="70" transform="rotate(135 100 100)" stroke-dasharray="329.87 439.8"/>
+          <circle class="arco-val" cx="100" cy="100" r="70" transform="rotate(135 100 100)" stroke-dasharray="269.5 439.8"/>
+          <text class="cifra" x="100" y="104" text-anchor="middle">82%</text>
+          <text class="cifra-sub" x="100" y="126" text-anchor="middle">54,166 de 66,300</text>
+        </svg>
+        <figcaption>Ejecutado contra el plan de faenas. Faltan 18,700 del portafolio sin desglosar.</figcaption>
+      </figure>
     </div>
-    <div class="lecturas">
-      <div class="lectura" style="width:45.5%"><b>5</b><span>al día</span></div>
-      <div class="lectura" style="width:18.2%"><b>2</b><span>atrasados</span></div>
-      <div class="lectura" style="width:36.3%"><b>4</b><span>sin semáforo</span></div>
+
+    <div class="modulo m-4">
+      <p class="titulo-mod">Estado y fase del portafolio</p>
+      <div class="anillos">
+        <div class="anillo">
+          <svg viewBox="0 0 130 130" role="img" aria-label="Cinco al día, dos atrasados, cuatro sin semáforo">
+            <circle cx="65" cy="65" r="54" fill="none" stroke="var(--line2)" stroke-width="15"/>
+            <circle cx="65" cy="65" r="54" fill="none" stroke="var(--ok)" stroke-width="15" stroke-dasharray="154.2 185.1" transform="rotate(-90 65 65)"/>
+            <circle cx="65" cy="65" r="54" fill="none" stroke="var(--late)" stroke-width="15" stroke-dasharray="61.7 277.6" transform="rotate(73.6 65 65)"/>
+            <circle cx="65" cy="65" r="54" fill="none" stroke="var(--none)" stroke-width="15" stroke-dasharray="123.4 215.9" transform="rotate(139.1 65 65)"/>
+            <text class="centro" x="65" y="73" text-anchor="middle">11</text>
+          </svg>
+          <ul class="leyenda">
+            <li><i style="background:var(--ok)"></i>Al día<span class="n">5</span></li>
+            <li><i style="background:var(--late)"></i>Atrasado<span class="n">2</span></li>
+            <li><i style="background:var(--none)"></i>Sin semáforo<span class="n">4</span></li>
+          </ul>
+        </div>
+        <div class="anillo">
+          <svg viewBox="0 0 130 130" role="img" aria-label="Cinco completados, cinco en curso, uno en planificación">
+            <circle cx="65" cy="65" r="54" fill="none" stroke="var(--line2)" stroke-width="15"/>
+            <circle cx="65" cy="65" r="54" fill="none" stroke="var(--glow)" stroke-width="15" stroke-dasharray="154.2 185.1" transform="rotate(-90 65 65)"/>
+            <circle cx="65" cy="65" r="54" fill="none" stroke="var(--glow2)" stroke-width="15" stroke-dasharray="154.2 185.1" transform="rotate(73.6 65 65)"/>
+            <circle cx="65" cy="65" r="54" fill="none" stroke="var(--warn)" stroke-width="15" stroke-dasharray="30.8 308.5" transform="rotate(237.3 65 65)"/>
+            <text class="centro" x="65" y="73" text-anchor="middle">11</text>
+          </svg>
+          <ul class="leyenda">
+            <li><i style="background:var(--glow)"></i>Completado<span class="n">5</span></li>
+            <li><i style="background:var(--glow2)"></i>En curso<span class="n">5</span></li>
+            <li><i style="background:var(--warn)"></i>Planificación<span class="n">1</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="modulo m-4">
+      <p class="titulo-mod">Las 18 faenas de Remodelación TT</p>
+      <div class="matriz" id="matriz" aria-label="Once faenas listas, tres en ejecución, cuatro bloqueadas"></div>
+      <ul class="leyenda" style="margin-top:14px">
+        <li><i style="background:rgba(50,227,155,.5);border:1px solid var(--ok)"></i>Listas<span class="n">11</span></li>
+        <li><i style="background:rgba(255,177,61,.5);border:1px solid var(--warn)"></i>En ejecución<span class="n">3</span></li>
+        <li><i style="background:rgba(255,86,115,.5);border:1px solid var(--late)"></i>Bloqueadas<span class="n">4</span></li>
+      </ul>
+    </div>
+
+    <div class="modulo m-12">
+      <p class="titulo-mod">Plan contra ejecutado, por partida — Remodelación Oficinas TT</p>
+      <div class="partidas" id="partidas"></div>
+      <div class="clave-barras">
+        <span><i style="background:var(--line2)"></i>Planificado</span>
+        <span><i style="background:var(--glow)"></i>Ejecutado</span>
+        <span><i style="background:var(--late)"></i>Sobre el plan</span>
+        <span><i style="background:var(--warn)"></i>Gasto sin plan</span>
+      </div>
     </div>
   </div>
 
-  <nav class="nav" role="tablist" aria-label="Secciones">
+  <nav class="nav" role="tablist" aria-label="Módulos">
     <button role="tab" id="t-port" aria-controls="p-port" aria-selected="true">Portafolio</button>
     <button role="tab" id="t-hall" aria-controls="p-hall" aria-selected="false">Hallazgos</button>
     <button role="tab" id="t-obra" aria-controls="p-obra" aria-selected="false">Registro de obra</button>
   </nav>
 
-  <!-- PORTAFOLIO -->
   <section class="pane" id="p-port" role="tabpanel" aria-labelledby="t-port">
     <div id="listado">
-      <p class="lectura-periodo">
-        El portafolio tiene dos frentes de atención. El primero son los proyectos atrasados que siguen
-        abiertos, Conexión sistema diesel y Laboratorio, ninguno con cronograma cargado, de modo que la
-        desviación no se puede cuantificar hoy. El segundo es la calidad del registro: cuatro iniciativas
-        sin semáforo, nueve sin costo y once sin líder. Mientras ese hueco persista, este tablero refleja
-        lo capturado, no el estado real de la obra.
-      </p>
+      <p class="prosa">El portafolio tiene dos frentes de atención. El primero son los proyectos atrasados que siguen abiertos, ninguno con cronograma cargado, de modo que la desviación no se puede cuantificar hoy. El segundo es la calidad del registro: cuatro iniciativas sin semáforo, nueve sin costo y once sin líder asignado. Mientras ese hueco persista, este tablero refleja lo capturado, no el estado real de la obra.</p>
 
       <div class="filtros">
-        <div class="grupo-filtro" id="f-rag">
+        <div class="grupo-f" id="f-rag">
           <span class="quien">Estado</span>
           <button data-v="todos" aria-pressed="true">Todos</button>
           <button data-v="al-dia" aria-pressed="false">Al día</button>
           <button data-v="atrasado" aria-pressed="false">Atrasado</button>
           <button data-v="sin-definir" aria-pressed="false">Sin semáforo</button>
         </div>
-        <div class="grupo-filtro" id="f-fase">
+        <div class="grupo-f" id="f-fase">
           <span class="quien">Fase</span>
           <button data-v="todas" aria-pressed="true">Todas</button>
           <button data-v="En curso" aria-pressed="false">En curso</button>
@@ -254,97 +362,23 @@
 
       <div class="marco">
         <table>
-          <thead>
-            <tr>
-              <th scope="col">Iniciativa</th>
-              <th scope="col">Estado</th>
-              <th scope="col">Fase</th>
-              <th scope="col">Tipo</th>
-              <th scope="col" class="cifra">Costo 2026</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
+          <thead><tr>
+            <th scope="col">Iniciativa</th><th scope="col">Estado</th><th scope="col">Fase</th>
+            <th scope="col">Tipo</th><th scope="col" class="cifra">Costo 2026</th><th scope="col"></th>
+          </tr></thead>
           <tbody id="cuerpo"></tbody>
         </table>
       </div>
-      <p class="pie-tabla">Las filas con <span class="entrar">Ver obra</span> tienen desglose de faenas y costos.</p>
     </div>
-
     <div id="detalle" hidden></div>
   </section>
 
-  <!-- HALLAZGOS -->
-  <section class="pane" id="p-hall" role="tabpanel" aria-labelledby="t-hall" hidden>
-    <div class="hallazgo h-grave">
-      <h3>El cierre de Remodelación Oficinas TT está trabado</h3>
-      <p>Las cuatro faenas de cierre —acta firmada y revisión de documentos y costos, en Oficina A y en Contabilidad— están marcadas como bloqueadas. La obra está prácticamente ejecutada, pero el proyecto no puede cerrarse mientras esas cuatro no se resuelvan.</p>
-    </div>
-    <div class="hallazgo h-grave">
-      <h3>Dos proyectos atrasados siguen abiertos</h3>
-      <p>Conexión sistema diesel PMO-25-12 y Laboratorio PMO-25-04 llevan semáforo rojo y fase en curso. Ninguno tiene cronograma planificado cargado, así que no hay forma de medir cuánto se han desviado ni de proyectar una fecha de cierre.</p>
-    </div>
-    <div class="hallazgo h-medio">
-      <h3>Hay gasto sin presupuesto asignado</h3>
-      <p>La partida de cuadros y decoración registra 3,048.10 de costo real sin ningún monto planificado contra el cual compararlo. Por su parte, la acometida eléctrica cerró en 4,199.75 frente a un plan de 3,900: un sobrecosto de 299.75.</p>
-    </div>
-    <div class="hallazgo h-medio">
-      <h3>Faltan 18,700 por desglosar</h3>
-      <p>Remodelación Oficinas TT figura con 85,000 en el portafolio, pero la suma de los planes de sus faenas llega a 66,300. La diferencia no está asignada a ninguna partida, de modo que no existe nada contra lo cual controlarla.</p>
-    </div>
-    <div class="hallazgo h-medio">
-      <h3>El semáforo cubre siete de once</h3>
-      <p>Cuatro iniciativas conservan la etiqueta por defecto en el estado del proyecto, y solo dos tienen costo 2026 cargado. Con esa cobertura, ni el semáforo ni el total financiero del portafolio son reportables al comité.</p>
-    </div>
-    <div class="hallazgo h-leve">
-      <h3>Ninguna iniciativa tiene líder</h3>
-      <p>La columna de líder está vacía en las once. A nivel de faena sí hay responsables, concentrados casi todos en una sola persona, pero sin dueño a nivel proyecto no hay a quién escalar un atraso.</p>
-    </div>
-    <div class="hallazgo h-leve">
-      <h3>Dos cierres quedaron a medias</h3>
-      <p>Certificación ISCC PMO-25-09 y Cafetería PMO-26-02 aparecen como completados pero sin estado final ni tipo. Conviene cerrarlos formalmente o archivarlos para que dejen de pesar sobre las métricas del portafolio activo.</p>
-    </div>
-  </section>
+  <section class="pane" id="p-hall" role="tabpanel" aria-labelledby="t-hall" hidden></section>
 
-  <!-- REGISTRO DE OBRA -->
   <section class="pane" id="p-obra" role="tabpanel" aria-labelledby="t-obra" hidden>
     <h2 class="rubro">Avance de la Oficina A</h2>
-    <p class="intro-fotos">
-      Doce registros tomados en tres jornadas consecutivas durante la primera semana de septiembre,
-      subidos por R. Cardoze al tablero de obra. Cualquiera de ellos se abre a tamaño completo.
-    </p>
-
-    <div class="jornada">
-      <h4>Primera jornada</h4>
-      <p class="fecha">Martes 1 de septiembre — 3 registros</p>
-      <div class="tiras">
-        <button type="button" data-src="fotos/d1-01.jpg" data-pie="Primera jornada, registro 1"><img src="fotos/d1-01.jpg" alt="Avance de obra, primera jornada, registro 1" loading="lazy"></button>
-        <button type="button" data-src="fotos/d1-02.jpg" data-pie="Primera jornada, registro 2"><img src="fotos/d1-02.jpg" alt="Avance de obra, primera jornada, registro 2" loading="lazy"></button>
-        <button type="button" data-src="fotos/d1-03.jpg" data-pie="Primera jornada, registro 3"><img src="fotos/d1-03.jpg" alt="Avance de obra, primera jornada, registro 3" loading="lazy"></button>
-      </div>
-    </div>
-
-    <div class="jornada">
-      <h4>Segunda jornada</h4>
-      <p class="fecha">Miércoles 2 de septiembre — 5 registros</p>
-      <div class="tiras">
-        <button type="button" data-src="fotos/d2-01.jpg" data-pie="Segunda jornada, registro 1"><img src="fotos/d2-01.jpg" alt="Avance de obra, segunda jornada, registro 1" loading="lazy"></button>
-        <button type="button" data-src="fotos/d2-02.jpg" data-pie="Segunda jornada, registro 2"><img src="fotos/d2-02.jpg" alt="Avance de obra, segunda jornada, registro 2" loading="lazy"></button>
-        <button type="button" data-src="fotos/d2-03.jpg" data-pie="Segunda jornada, registro 3"><img src="fotos/d2-03.jpg" alt="Avance de obra, segunda jornada, registro 3" loading="lazy"></button>
-        <button type="button" data-src="fotos/d2-04.jpg" data-pie="Segunda jornada, registro 4"><img src="fotos/d2-04.jpg" alt="Avance de obra, segunda jornada, registro 4" loading="lazy"></button>
-        <button type="button" data-src="fotos/d2-05.jpg" data-pie="Segunda jornada, registro 5"><img src="fotos/d2-05.jpg" alt="Avance de obra, segunda jornada, registro 5" loading="lazy"></button>
-      </div>
-    </div>
-
-    <div class="jornada">
-      <h4>Tercera jornada</h4>
-      <p class="fecha">Jueves 3 de septiembre — 4 registros</p>
-      <div class="tiras">
-        <button type="button" data-src="fotos/d3-01.jpg" data-pie="Tercera jornada, registro 1"><img src="fotos/d3-01.jpg" alt="Avance de obra, tercera jornada, registro 1" loading="lazy"></button>
-        <button type="button" data-src="fotos/d3-02.jpg" data-pie="Tercera jornada, registro 2"><img src="fotos/d3-02.jpg" alt="Avance de obra, tercera jornada, registro 2" loading="lazy"></button>
-        <button type="button" data-src="fotos/d3-03.jpg" data-pie="Tercera jornada, registro 3"><img src="fotos/d3-03.jpg" alt="Avance de obra, tercera jornada, registro 3" loading="lazy"></button>
-        <button type="button" data-src="fotos/d3-04.jpg" data-pie="Tercera jornada, registro 4"><img src="fotos/d3-04.jpg" alt="Avance de obra, tercera jornada, registro 4" loading="lazy"></button>
-      </div>
-    </div>
+    <p class="prosa">Doce registros tomados en tres jornadas consecutivas durante la primera semana de septiembre, subidos por R. Cardoze al tablero de obra.</p>
+    <div id="galeria"></div>
   </section>
 
   <footer>
@@ -354,156 +388,178 @@
 </div>
 
 <div id="visor" hidden>
-  <button type="button" class="salir" id="cerrar-visor">Cerrar</button>
+  <button type="button" class="salir" id="cerrar-visor">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    Cerrar
+  </button>
   <img id="visor-img" src="" alt="">
-  <p class="rotulo-foto" id="visor-pie"></p>
+  <p class="pie" id="visor-pie"></p>
 </div>
 
 <script>
-const OBRAS = [
-  {n:"Conexión sistema diesel 100-4", c:"PMO-25-12", rag:"atrasado", ragL:"Atrasado", fase:"En curso", tipo:"Proyecto", costo:null},
-  {n:"Laboratorio", c:"PMO-25-04", rag:"atrasado", ragL:"Atrasado", fase:"En curso", tipo:"Proyecto", costo:null},
-  {n:"Remodelación Oficinas TT", c:"Fases 1 y 2", rag:"sin-definir", ragL:"Sin semáforo", fase:"En curso", tipo:"Mejora", costo:85000, det:true},
-  {n:"Sistema eléctrico Oficinas MOTI y TT", c:null, rag:"al-dia", ragL:"Al día", fase:"En curso", tipo:"Mejora", costo:null},
-  {n:"Recirculación P-1001/1004", c:"PMO-25-10", rag:"al-dia", ragL:"Al día", fase:"En curso", tipo:"Mejora", costo:null},
-  {n:"Guardavidas para calle en MOTI", c:"HSE-26-07", rag:"sin-definir", ragL:"Sin semáforo", fase:"Planificación", tipo:"Mejora", costo:15000},
-  {n:"Tanque 220-4", c:"MAN-024-014", rag:"al-dia", ragL:"Al día", fase:"Completado", tipo:"Proyecto", costo:null},
-  {n:"Sala de capacitación TT", c:"PMO-26-01", rag:"al-dia", ragL:"Al día", fase:"Completado", tipo:"Mejora", costo:null},
-  {n:"Venteo en nivel 14", c:"PMO-25-14", rag:"al-dia", ragL:"Al día", fase:"Completado", tipo:"Mejora", costo:null},
-  {n:"Certificación ISCC", c:"PMO-25-09", rag:"sin-definir", ragL:"Sin semáforo", fase:"Completado", tipo:null, costo:null},
-  {n:"Cafetería", c:"PMO-26-02", rag:"sin-definir", ragL:"Sin semáforo", fase:"Completado", tipo:null, costo:null}
-];
+const OBRAS=[
+ {n:"Conexión sistema diesel 100-4",c:"PMO-25-12",rag:"atrasado",ragL:"Atrasado",fase:"En curso",tipo:"Proyecto",costo:null},
+ {n:"Laboratorio",c:"PMO-25-04",rag:"atrasado",ragL:"Atrasado",fase:"En curso",tipo:"Proyecto",costo:null},
+ {n:"Remodelación Oficinas TT",c:"Fases 1 y 2",rag:"sin-definir",ragL:"Sin semáforo",fase:"En curso",tipo:"Mejora",costo:85000,det:true},
+ {n:"Sistema eléctrico Oficinas MOTI y TT",c:null,rag:"al-dia",ragL:"Al día",fase:"En curso",tipo:"Mejora",costo:null},
+ {n:"Recirculación P-1001/1004",c:"PMO-25-10",rag:"al-dia",ragL:"Al día",fase:"En curso",tipo:"Mejora",costo:null},
+ {n:"Guardavidas para calle en MOTI",c:"HSE-26-07",rag:"sin-definir",ragL:"Sin semáforo",fase:"Planificación",tipo:"Mejora",costo:15000},
+ {n:"Tanque 220-4",c:"MAN-024-014",rag:"al-dia",ragL:"Al día",fase:"Completado",tipo:"Proyecto",costo:null},
+ {n:"Sala de capacitación TT",c:"PMO-26-01",rag:"al-dia",ragL:"Al día",fase:"Completado",tipo:"Mejora",costo:null},
+ {n:"Venteo en nivel 14",c:"PMO-25-14",rag:"al-dia",ragL:"Al día",fase:"Completado",tipo:"Mejora",costo:null},
+ {n:"Certificación ISCC",c:"PMO-25-09",rag:"sin-definir",ragL:"Sin semáforo",fase:"Completado",tipo:null,costo:null},
+ {n:"Cafetería",c:"PMO-26-02",rag:"sin-definir",ragL:"Sin semáforo",fase:"Completado",tipo:null,costo:null}];
 
-const FRENTES = [
-  {g:"Planificación", s:"Oficina A", t:[
-    {n:"Plan de mejora", o:"R. Cardoze", e:"curso", eL:"En ejecución", m:"ago 25 – oct 26", p:null, a:null},
-    {n:"Aceptación del plan", o:"Esteban Millaa", e:"ok", eL:"Listo", m:null, p:null, a:null}
-  ]},
-  {g:"Ejecución y control", s:"Oficina A", t:[
-    {n:"Obras de infraestructura", o:"R. Cardoze", e:"ok", eL:"Listo", m:null, p:null, a:null},
-    {n:"Acometida eléctrica", o:null, e:"ok", eL:"Listo", m:null, p:3900, a:4199.75, sobre:true},
-    {n:"Muebles", o:"R. Cardoze", e:"ok", eL:"Listo", m:"sep 2 – sep 16", p:8900, a:6408.86},
-    {n:"Aires acondicionados", o:"R. Cardoze", e:"ok", eL:"Listo", m:"sep 2 – sep 16", p:1800, a:600},
-    {n:"Cuadros y decoración", o:"R. Cardoze", e:"ok", eL:"Listo", m:"ago 5 – ago 21", p:null, a:3048.10, sinplan:true},
-    {n:"Costo de contingencia", o:null, e:"ok", eL:"Listo", m:null, p:2000, a:null}
-  ]},
-  {g:"Cierre", s:"Oficina A", t:[
-    {n:"Acta de cierre firmada", o:"R. Cardoze", e:"trab", eL:"Bloqueado", m:null, p:null, a:null},
-    {n:"Revisión de documentos y costos", o:"R. Cardoze", e:"trab", eL:"Bloqueado", m:null, p:null, a:null},
-    {n:"Avance fotográfico", o:"R. Cardoze", e:"ok", eL:"Listo", m:null, p:null, a:null}
-  ]},
-  {g:"Ejecución y control", s:"Oficina de Contabilidad", t:[
-    {n:"Obras de infraestructura", o:"R. Cardoze", e:"curso", eL:"En ejecución", m:null, p:25500, a:25500},
-    {n:"Muebles", o:"R. Cardoze", e:"curso", eL:"En ejecución", m:null, p:18900, a:14408.89},
-    {n:"Aires acondicionados", o:"R. Cardoze", e:"ok", eL:"Listo", m:null, p:2800, a:null},
-    {n:"Costo de contingencia", o:null, e:"ok", eL:"Listo", m:null, p:2500, a:null}
-  ]},
-  {g:"Cierre", s:"Oficina de Contabilidad", t:[
-    {n:"Acta de cierre firmada", o:null, e:"trab", eL:"Bloqueado", m:null, p:null, a:null},
-    {n:"Revisión de documentos y costos", o:null, e:"trab", eL:"Bloqueado", m:null, p:null, a:null},
-    {n:"Avance fotográfico", o:null, e:"ok", eL:"Listo", m:null, p:null, a:null}
-  ]}
-];
+const PARTIDAS=[
+ {n:"Obras de infraestructura",s:"Contabilidad",p:25500,a:25500},
+ {n:"Muebles",s:"Contabilidad",p:18900,a:14408.89},
+ {n:"Muebles",s:"Oficina A",p:8900,a:6408.86},
+ {n:"Acometida eléctrica",s:"Oficina A",p:3900,a:4199.75,exceso:true},
+ {n:"Cuadros y decoración",s:"Oficina A",p:0,a:3048.10,sinplan:true},
+ {n:"Aires acondicionados",s:"Contabilidad",p:2800,a:0},
+ {n:"Contingencia",s:"Contabilidad",p:2500,a:0},
+ {n:"Contingencia",s:"Oficina A",p:2000,a:0},
+ {n:"Aires acondicionados",s:"Oficina A",p:1800,a:600}];
 
-const RIEL = {"al-dia":"r-ok","atrasado":"r-late","sin-definir":"r-none"};
-const plata = v => v == null ? null : v.toLocaleString("es-MX",{minimumFractionDigits:2,maximumFractionDigits:2});
-let fRag = "todos", fFase = "todas";
+const FRENTES=[
+ {g:"Planificación",s:"Oficina A",t:[
+  {n:"Plan de mejora",o:"R. Cardoze",e:"curso",eL:"En ejecución",p:null,a:null},
+  {n:"Aceptación del plan",o:"Esteban Millaa",e:"ok",eL:"Listo",p:null,a:null}]},
+ {g:"Ejecución y control",s:"Oficina A",t:[
+  {n:"Obras de infraestructura",o:"R. Cardoze",e:"ok",eL:"Listo",p:null,a:null},
+  {n:"Acometida eléctrica",o:null,e:"ok",eL:"Listo",p:3900,a:4199.75,exceso:true},
+  {n:"Muebles",o:"R. Cardoze",e:"ok",eL:"Listo",p:8900,a:6408.86},
+  {n:"Aires acondicionados",o:"R. Cardoze",e:"ok",eL:"Listo",p:1800,a:600},
+  {n:"Cuadros y decoración",o:"R. Cardoze",e:"ok",eL:"Listo",p:null,a:3048.10,sinplan:true},
+  {n:"Contingencia",o:null,e:"ok",eL:"Listo",p:2000,a:null}]},
+ {g:"Cierre",s:"Oficina A",t:[
+  {n:"Acta de cierre firmada",o:"R. Cardoze",e:"trab",eL:"Bloqueado",p:null,a:null},
+  {n:"Revisión de documentos y costos",o:"R. Cardoze",e:"trab",eL:"Bloqueado",p:null,a:null},
+  {n:"Avance fotográfico",o:"R. Cardoze",e:"ok",eL:"Listo",p:null,a:null}]},
+ {g:"Ejecución y control",s:"Oficina de Contabilidad",t:[
+  {n:"Obras de infraestructura",o:"R. Cardoze",e:"curso",eL:"En ejecución",p:25500,a:25500},
+  {n:"Muebles",o:"R. Cardoze",e:"curso",eL:"En ejecución",p:18900,a:14408.89},
+  {n:"Aires acondicionados",o:"R. Cardoze",e:"ok",eL:"Listo",p:2800,a:null},
+  {n:"Contingencia",o:null,e:"ok",eL:"Listo",p:2500,a:null}]},
+ {g:"Cierre",s:"Oficina de Contabilidad",t:[
+  {n:"Acta de cierre firmada",o:null,e:"trab",eL:"Bloqueado",p:null,a:null},
+  {n:"Revisión de documentos y costos",o:null,e:"trab",eL:"Bloqueado",p:null,a:null},
+  {n:"Avance fotográfico",o:null,e:"ok",eL:"Listo",p:null,a:null}]}];
+
+const HALLAZGOS=[
+ {s:"grave",t:"El cierre de Remodelación Oficinas TT está trabado",d:"Las cuatro faenas de cierre —acta firmada y revisión de documentos y costos, en Oficina A y en Contabilidad— están bloqueadas. La obra está prácticamente ejecutada, pero el proyecto no puede cerrarse mientras esas cuatro no se resuelvan."},
+ {s:"grave",t:"Dos proyectos atrasados siguen abiertos",d:"Conexión sistema diesel PMO-25-12 y Laboratorio PMO-25-04 llevan semáforo rojo y fase en curso. Ninguno tiene cronograma planificado cargado, así que no hay forma de medir la desviación ni de proyectar una fecha de cierre."},
+ {s:"medio",t:"Hay gasto sin presupuesto asignado",d:"La partida de cuadros y decoración registra 3,048.10 de costo real sin ningún monto planificado contra el cual compararlo. La acometida eléctrica cerró en 4,199.75 frente a un plan de 3,900: un sobrecosto de 299.75."},
+ {s:"medio",t:"Faltan 18,700 por desglosar",d:"Remodelación Oficinas TT figura con 85,000 en el portafolio, pero la suma de los planes de sus faenas llega a 66,300. La diferencia no está asignada a ninguna partida, de modo que no existe nada contra lo cual controlarla."},
+ {s:"medio",t:"El semáforo cubre siete de once",d:"Cuatro iniciativas conservan la etiqueta por defecto en el estado del proyecto, y solo dos tienen costo 2026 cargado. Con esa cobertura, ni el semáforo ni el total financiero del portafolio son reportables al comité."},
+ {s:"leve",t:"Ninguna iniciativa tiene líder",d:"La columna de líder está vacía en las once. A nivel de faena sí hay responsables, concentrados casi todos en una sola persona, pero sin dueño a nivel proyecto no hay a quién escalar un atraso."},
+ {s:"leve",t:"Dos cierres quedaron a medias",d:"Certificación ISCC PMO-25-09 y Cafetería PMO-26-02 aparecen como completados pero sin estado final ni tipo. Conviene cerrarlos formalmente o archivarlos para que dejen de pesar sobre las métricas del portafolio activo."}];
+
+const JORNADAS=[
+ {t:"Primera jornada",f:"Martes 1 de septiembre · 3 registros",fotos:["d1-01","d1-02","d1-03"]},
+ {t:"Segunda jornada",f:"Miércoles 2 de septiembre · 5 registros",fotos:["d2-01","d2-02","d2-03","d2-04","d2-05"]},
+ {t:"Tercera jornada",f:"Jueves 3 de septiembre · 4 registros",fotos:["d3-01","d3-02","d3-03","d3-04"]}];
+
+const ICONOS={
+ grave:'<path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+ medio:'<circle cx="12" cy="12" r="9"/><path d="M12 8v4"/><path d="M12 16h.01"/>',
+ leve:'<circle cx="12" cy="12" r="9"/><path d="M12 16v-4"/><path d="M12 8h.01"/>'};
+const ico=(k,s)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONOS[k]}</svg>`;
+const CHIP={"al-dia":"c-ok","atrasado":"c-late","sin-definir":"c-none"};
+const num=v=>v==null?null:v.toLocaleString("es-MX",{minimumFractionDigits:2,maximumFractionDigits:2});
+let fRag="todos",fFase="todas";
+
+// Matriz de faenas
+document.getElementById("matriz").innerHTML=FRENTES.flatMap(f=>f.t).map(t=>
+  `<div class="celda" data-e="${t.e}" title="${t.n} — ${t.eL}"></div>`).join("");
+
+// Barras por partida
+const TOPE=Math.max(...PARTIDAS.map(p=>Math.max(p.p,p.a)));
+document.getElementById("partidas").innerHTML=PARTIDAS.map(p=>{
+  const cls=p.exceso?"exceso":(p.sinplan?"sinplan":"");
+  const dif=p.p>0&&p.a>0?p.a-p.p:null;
+  return `<div class="partida">
+    <div class="nombre">${p.n}<small>${p.s}</small></div>
+    <div class="pistas">
+      <div class="pista plan"><span style="width:${(p.p/TOPE*100).toFixed(1)}%"></span></div>
+      <div class="pista real ${cls}"><span style="width:${(p.a/TOPE*100).toFixed(1)}%"></span></div>
+    </div>
+    <div class="montos">${p.p>0?`plan <b>${num(p.p)}</b>`:`<span class="malo">sin plan</span>`} · real <b class="${p.exceso?'malo':''}">${p.a>0?num(p.a):"—"}</b>${dif&&dif>0?` <span class="malo">+${num(dif)}</span>`:""}</div>
+  </div>`}).join("");
+
+// Hallazgos
+document.getElementById("p-hall").innerHTML=HALLAZGOS.map(h=>
+  `<article class="hallazgo ${h.s}"><div class="fila">${ico(h.s,19)}<div><h3>${h.t}</h3><p>${h.d}</p></div></div></article>`).join("");
+
+// Galería
+document.getElementById("galeria").innerHTML=JORNADAS.map(j=>
+  `<div class="jornada"><h4>${j.t}</h4><p class="fecha">${j.f}</p><div class="tiras">${
+    j.fotos.map((f,i)=>`<button type="button" data-src="fotos/${f}.jpg" data-pie="${j.t} · registro ${i+1}"><img src="fotos/${f}.jpg" alt="Avance de obra, ${j.t.toLowerCase()}, registro ${i+1}" loading="lazy"></button>`).join("")
+  }</div></div>`).join("");
 
 function pintar(){
-  const vis = OBRAS.filter(o => (fRag==="todos"||o.rag===fRag) && (fFase==="todas"||o.fase===fFase));
-  const tb = document.getElementById("cuerpo");
-  if(!vis.length){ tb.innerHTML = '<tr><td colspan="6" class="nada">Ninguna iniciativa coincide con estos filtros.</td></tr>'; return; }
-  tb.innerHTML = vis.map(o => `<tr class="${RIEL[o.rag]}${o.det?" abrible":""}"${o.det?' tabindex="0"':''}>
-      <td><span class="obra">${o.n}</span>${o.c?`<span class="clave">${o.c}</span>`:""}</td>
-      <td class="estado">${o.ragL}</td>
-      <td class="estado">${o.fase}</td>
-      <td class="estado">${o.tipo||'<span class="vacio">sin tipo</span>'}</td>
-      <td class="cifra">${o.costo?o.costo.toLocaleString("es-MX"):'<span class="vacio">sin cargar</span>'}</td>
-      <td>${o.det?'<span class="entrar">Ver obra</span>':""}</td>
-    </tr>`).join("");
+  const v=OBRAS.filter(o=>(fRag==="todos"||o.rag===fRag)&&(fFase==="todas"||o.fase===fFase));
+  const tb=document.getElementById("cuerpo");
+  if(!v.length){tb.innerHTML='<tr><td colspan="6" class="nada">Ninguna iniciativa coincide con estos filtros. Prueba quitando uno.</td></tr>';return}
+  tb.innerHTML=v.map(o=>`<tr class="${o.det?"abrible":""}"${o.det?' tabindex="0"':''}>
+    <td><span class="obra">${o.n}</span>${o.c?`<span class="clave">${o.c}</span>`:""}</td>
+    <td><span class="chip ${CHIP[o.rag]}"><i></i>${o.ragL}</span></td>
+    <td>${o.fase}</td>
+    <td>${o.tipo||'<span class="sin">sin tipo</span>'}</td>
+    <td class="cifra">${o.costo?o.costo.toLocaleString("es-MX"):'<span class="sin">sin cargar</span>'}</td>
+    <td>${o.det?'<span class="ir">Ver faenas</span>':""}</td></tr>`).join("");
 }
 
-function abrirDetalle(){
-  document.getElementById("detalle").innerHTML = `
-    <button class="volver" id="volver">← Volver al portafolio</button>
-    <div class="det-cabeza">
-      <h3>Remodelación Oficinas TT</h3>
-      <p>Fases 1 y 2 · empresa TT · 85,000 registrados en portafolio</p>
-    </div>
-    <div class="medidas">
-      <div class="medida"><b>18</b><span>faenas</span></div>
-      <div class="medida alerta"><b>4</b><span>bloqueadas</span></div>
-      <div class="medida"><b>66,300</b><span>plan de faenas</span></div>
-      <div class="medida"><b>54,166</b><span>ejecutado, 82%</span></div>
-    </div>
-    ${FRENTES.map(f => `<div class="frente">
-      <h4>${f.g}</h4><p class="sitio">${f.s}</p>
-      <ul class="faenas">${f.t.map(t => {
-        let d = "";
-        if(t.p != null || t.a != null){
-          const pl = t.p != null ? `plan ${plata(t.p)}` : `<span class="sin">sin plan</span>`;
-          const ac = t.a != null ? `real ${plata(t.a)}` : `real —`;
-          d = `${pl} &nbsp; <span class="${t.sobre?'sobre':''}">${ac}</span>`;
+function abrir(){
+  document.getElementById("detalle").innerHTML=`
+    <button class="volver" id="volver">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+      Volver al portafolio</button>
+    <div class="det-cab"><h3>Remodelación Oficinas TT</h3>
+      <p>Fases 1 y 2 · empresa TT · 18 faenas · 85,000 registrados en portafolio</p></div>
+    ${FRENTES.map(f=>`<div class="frente"><h4>${f.g}</h4><p class="sitio">${f.s}</p>
+      <ul class="faenas">${f.t.map(t=>{
+        let d="";
+        if(t.p!=null||t.a!=null){
+          const pl=t.p!=null?`plan ${num(t.p)}`:`<span class="aviso">sin plan</span>`;
+          const ac=t.a!=null?`real ${num(t.a)}`:`real —`;
+          d=`${pl} · <span class="${t.exceso?'malo':''}">${ac}</span>`;
         }
-        return `<li class="f-${t.e}">
+        return `<li><span class="chip ${t.e==='ok'?'c-ok':t.e==='curso'?'c-none':'c-late'}"><i style="background:${t.e==='ok'?'var(--ok)':t.e==='curso'?'var(--warn)':'var(--late)'}"></i></span>
           <span class="que"><b>${t.n}</b><span class="quien">${t.o||"sin responsable"} · ${t.eL}</span></span>
-          <span class="marca">${t.m||""}</span>
-          <span class="plata">${d}</span>
-        </li>`;
-      }).join("")}</ul>
-    </div>`).join("")}`;
-  document.getElementById("listado").hidden = true;
-  document.getElementById("detalle").hidden = false;
-  const v = document.getElementById("volver");
-  v.addEventListener("click", () => {
-    document.getElementById("detalle").hidden = true;
-    document.getElementById("listado").hidden = false;
-  });
-  v.focus();
+          <span class="plata">${d}</span></li>`}).join("")}</ul></div>`).join("")}`;
+  document.getElementById("listado").hidden=true;
+  document.getElementById("detalle").hidden=false;
+  const b=document.getElementById("volver");
+  b.addEventListener("click",()=>{document.getElementById("detalle").hidden=true;document.getElementById("listado").hidden=false});
+  b.focus();
 }
 
-const pestanas = [...document.querySelectorAll(".nav button")];
-pestanas.forEach(p => p.addEventListener("click", () => {
-  pestanas.forEach(o => {
-    const on = o === p;
-    o.setAttribute("aria-selected", on);
-    document.getElementById(o.getAttribute("aria-controls")).hidden = !on;
-  });
-}));
+const tabs=[...document.querySelectorAll(".nav button")];
+tabs.forEach(t=>t.addEventListener("click",()=>tabs.forEach(o=>{
+  const on=o===t;o.setAttribute("aria-selected",on);
+  document.getElementById(o.getAttribute("aria-controls")).hidden=!on})));
 
-function conectar(id, set){
-  document.getElementById(id).addEventListener("click", e => {
-    const b = e.target.closest("button");
-    if(!b) return;
-    [...e.currentTarget.querySelectorAll("button")].forEach(c => c.setAttribute("aria-pressed", c === b));
-    set(b.dataset.v); pintar();
-  });
-}
-conectar("f-rag", v => fRag = v);
-conectar("f-fase", v => fFase = v);
+function conectar(id,set){document.getElementById(id).addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  [...e.currentTarget.querySelectorAll("button")].forEach(c=>c.setAttribute("aria-pressed",c===b));
+  set(b.dataset.v);pintar()})}
+conectar("f-rag",v=>fRag=v); conectar("f-fase",v=>fFase=v);
 
-document.getElementById("cuerpo").addEventListener("click", e => {
-  if(e.target.closest("tr.abrible")) abrirDetalle();
-});
-document.getElementById("cuerpo").addEventListener("keydown", e => {
-  if((e.key === "Enter" || e.key === " ") && e.target.closest("tr.abrible")){ e.preventDefault(); abrirDetalle(); }
-});
+document.getElementById("cuerpo").addEventListener("click",e=>{if(e.target.closest("tr.abrible"))abrir()});
+document.getElementById("cuerpo").addEventListener("keydown",e=>{
+  if((e.key==="Enter"||e.key===" ")&&e.target.closest("tr.abrible")){e.preventDefault();abrir()}});
 
-const visor = document.getElementById("visor");
-const vImg = document.getElementById("visor-img");
-const vPie = document.getElementById("visor-pie");
-let previo = null;
-document.getElementById("p-obra").addEventListener("click", e => {
-  const b = e.target.closest(".tiras button");
-  if(!b) return;
-  previo = b; vImg.src = b.dataset.src; vImg.alt = b.querySelector("img").alt;
-  vPie.textContent = b.dataset.pie; visor.hidden = false;
-  document.getElementById("cerrar-visor").focus();
-});
-function cerrar(){ visor.hidden = true; vImg.src = ""; if(previo) previo.focus(); }
-document.getElementById("cerrar-visor").addEventListener("click", cerrar);
-visor.addEventListener("click", e => { if(e.target === visor || e.target === vImg) cerrar(); });
-document.addEventListener("keydown", e => { if(e.key === "Escape" && !visor.hidden) cerrar(); });
+const visor=document.getElementById("visor"),vImg=document.getElementById("visor-img"),vPie=document.getElementById("visor-pie");
+let previo=null;
+document.getElementById("p-obra").addEventListener("click",e=>{
+  const b=e.target.closest(".tiras button");if(!b)return;
+  previo=b;vImg.src=b.dataset.src;vImg.alt=b.querySelector("img").alt;
+  vPie.textContent=b.dataset.pie;visor.hidden=false;document.getElementById("cerrar-visor").focus()});
+function cerrar(){visor.hidden=true;vImg.src="";if(previo)previo.focus()}
+document.getElementById("cerrar-visor").addEventListener("click",cerrar);
+visor.addEventListener("click",e=>{if(e.target===visor||e.target===vImg)cerrar()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!visor.hidden)cerrar()});
 
 pintar();
 </script>
