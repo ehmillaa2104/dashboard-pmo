@@ -34,7 +34,7 @@
 
   /* Barra de sistema */
   .sistema{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:center;
-    padding-block:14px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--txt2)}
+    padding-block:15px 18px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--txt2)}
   .sistema .val{font-family:var(--num);color:var(--txt);font-weight:500}
   .vivo{display:inline-flex;align-items:center;gap:7px;color:var(--ok)}
   .punto{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(50,227,155,.6);animation:late 2.6s ease-out infinite}
@@ -55,7 +55,7 @@
 
   /* Rejilla de módulos */
   .rejilla{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:22px}
-  .modulo{background:var(--panel);border:1px solid var(--line);padding:18px;position:relative;
+  .modulo{background:var(--panel);padding:18px;position:relative;box-shadow:0 2px 14px rgba(0,0,0,.5),inset 0 0 0 1px var(--line);
     opacity:0;animation:resolver .5s cubic-bezier(.16,1,.3,1) forwards}
   .modulo::before,.modulo::after{content:"";position:absolute;width:9px;height:9px;border:1px solid var(--glow);opacity:.5}
   .modulo::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
@@ -65,7 +65,6 @@
   @keyframes resolver{from{opacity:0;filter:blur(7px);transform:translateY(9px)}to{opacity:1;filter:blur(0);transform:none}}
   @media (prefers-reduced-motion:reduce){
     .modulo{opacity:1;animation:none}
-    .punto{animation:none}
     .arco-val{stroke-dasharray:none!important;animation:none!important}
   }
   .m-4{grid-column:span 4} .m-5{grid-column:span 5} .m-7{grid-column:span 7}
@@ -241,7 +240,7 @@
 <div class="consola">
 
   <div class="sistema">
-    <span class="vivo"><span class="punto"></span>Portafolio activo</span>
+    <span class="instantanea"><i></i>Instantánea, no tiempo real</span>
     <span>Iniciativas <span class="val">11</span></span>
     <span>En ejecución <span class="val">5</span></span>
     <span>Faenas trabadas <span class="val" style="color:var(--late)">4</span></span>
@@ -392,7 +391,6 @@
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
     Cerrar
   </button>
-  <img id="visor-img" src="" alt="">
   <p class="pie" id="visor-pie"></p>
 </div>
 
@@ -550,7 +548,9 @@ document.getElementById("cuerpo").addEventListener("click",e=>{if(e.target.close
 document.getElementById("cuerpo").addEventListener("keydown",e=>{
   if((e.key==="Enter"||e.key===" ")&&e.target.closest("tr.abrible")){e.preventDefault();abrir()}});
 
-const visor=document.getElementById("visor"),vImg=document.getElementById("visor-img"),vPie=document.getElementById("visor-pie");
+const visor=document.getElementById("visor");
+const vImg=document.createElement("img");vImg.id="visor-img";visor.insertBefore(vImg,visor.querySelector(".pie"));
+const vPie=document.getElementById("visor-pie");
 let previo=null;
 document.getElementById("p-obra").addEventListener("click",e=>{
   const b=e.target.closest(".tiras button");if(!b)return;
